@@ -5,102 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NB Fitness Academy | Nazir & Arif</title>
     <style>
-        :root { --main-red: #ff3e3e; --dark-bg: #0d0d0d; --card-bg: #161616; --text-light: #f4f4f4; --gold: #d4af37; }
-        body { font-family: 'Oswald', sans-serif; background: var(--dark-bg); color: var(--text-light); margin: 0; padding: 0; }
+        :root { --main-red: #ff3e3e; --dark-bg: #0a0a0a; --card-bg: #111111; --text-light: #ffffff; --gold: #d4af37; }
+        body { font-family: 'Oswald', sans-serif; background: var(--dark-bg); color: var(--text-light); margin: 0; padding: 0; overflow-x: hidden; }
         
-        header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200'); background-size: cover; padding: 100px 20px; text-align: center; border-bottom: 5px solid var(--main-red); }
-        .logo-box { display: inline-block; border: 3px solid var(--text-light); padding: 10px 20px; margin-bottom: 20px; }
-        h1 { font-size: 55px; text-transform: uppercase; letter-spacing: 5px; margin: 0; font-weight: 700; }
-        h1 span { color: var(--main-red); }
-        .motto { font-size: 20px; color: #bbb; margin-top: 15px; font-weight: 300; letter-spacing: 1px; }
-        
+        /* Header Dizaynı */
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200'); 
+            background-size: cover; 
+            padding: 100px 20px; 
+            text-align: center; 
+            border-bottom: 5px solid var(--main-red); 
+        }
+        .logo-area h1 { font-size: 50px; text-transform: uppercase; letter-spacing: 4px; margin: 0; font-weight: 700; }
+        .logo-area h1 span { color: var(--main-red); }
+        .motto { font-size: 18px; color: #aaa; margin-top: 10px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* Kartlar Bölməsi */
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
         
-        .coach-card { background: var(--card-bg); border-radius: 10px; overflow: hidden; width: 100%; max-width: 480px; border: 1px solid #222; transition: 0.4s ease-in-out; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; }
-        .coach-card:hover { transform: translateY(-15px); border-color: var(--main-red); box-shadow: 0 20px 50px rgba(255,62,62,0.3); }
+        .coach-card { 
+            background: var(--card-bg); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            width: 100%; 
+            max-width: 480px; 
+            border: 1px solid #222; 
+            transition: 0.4s ease; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+        .coach-card:hover { transform: translateY(-15px); border-color: var(--main-red); }
         
-        .img-container { position: relative; width: 100%; height: 600px; overflow: hidden; }
-        .coach-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .coach-card:hover .coach-img { transform: scale(1.05); }
-        
-        .card-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); padding: 30px 20px; box-sizing: border-box; }
-        .coach-name { font-size: 32px; text-transform: uppercase; color: var(--text-light); font-weight: 700; margin: 0; letter-spacing: 1px; }
-        .coach-title { font-size: 16px; color: var(--gold); text-transform: uppercase; font-weight: bold; letter-spacing: 2px; margin-top: 5px; }
-        
-        .info { padding: 30px 25px; background: #1a1a1a; }
-        .tips { margin-bottom: 30px; }
-        .tips h3 { font-size: 20px; color: var(--gold); text-transform: uppercase; margin-bottom: 15px; border-left: 4px solid var(--main-red); padding-left: 10px; }
-        .tips ul { padding-left: 20px; color: #ccc; line-height: 1.8; font-size: 16px; }
-        .tips ul li { margin-bottom: 8px; }
-        
-        .contact-btn { display: block; background: var(--main-red); color: white; text-align: center; padding: 18px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        .contact-btn:hover { background: #cc0000; box-shadow: 0 5px 20px rgba(255,62,62,0.4); }
+        .img-box { width: 100%; height: 550px; position: relative; overflow: hidden; }
+        .coach-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .coach-card:hover .coach-img { transform: scale(1.1); }
 
-        footer { text-align: center; padding: 50px 20px; background: #000; font-size: 15px; color: #666; border-top: 1px solid #1a1a1a; }
-        .footer-logo { font-size: 22px; color: #fff; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; }
-        .footer-logo span { color: var(--main-red); }
+        .overlay { 
+            position: absolute; bottom: 0; left: 0; width: 100%; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.9)); 
+            padding: 30px 20px; box-sizing: border-box; 
+        }
+        .name { font-size: 32px; font-weight: 700; margin: 0; text-transform: uppercase; color: #fff; }
+        .title { color: var(--gold); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+
+        /* Məsləhətlər və Əlaqə */
+        .details { padding: 30px; }
+        .tips-box h3 { color: var(--main-red); text-transform: uppercase; font-size: 20px; border-bottom: 2px solid #222; padding-bottom: 10px; margin-bottom: 15px; }
+        .tips-box ul { padding-left: 20px; color: #ccc; line-height: 1.8; }
+        .tips-box li { margin-bottom: 10px; font-size: 16px; }
+
+        .btn { 
+            display: block; background: var(--main-red); color: white; text-align: center; 
+            padding: 18px; text-decoration: none; font-weight: bold; border-radius: 8px; 
+            font-size: 20px; transition: 0.3s; margin-top: 25px; text-transform: uppercase;
+        }
+        .btn:hover { background: #b30000; box-shadow: 0 5px 20px rgba(255, 62, 62, 0.4); }
+
+        footer { text-align: center; padding: 50px; background: #000; color: #444; font-size: 14px; border-top: 1px solid #111; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <div class="logo-box">
+    <div class="logo-area">
         <h1>NB <span>FITNESS</span> ACADEMY</h1>
     </div>
-    <p class="motto">Güc, İradə, Nəticə. Peşəkar Məşqçilərlə Həyatını Dəyiş!</p>
+    <p class="motto">Nazir İbrahimov & Arif Bağırov ilə Bədənini Yenilə!</p>
 </header>
 
 <div class="container">
     <div class="coach-card">
-        <div class="img-container">
-            <img src="https://lh3.googleusercontent.com/pw/AP1GczM4K0K9gW78Jb7H5P1R_U1M_O_Z1X_V_L1Z_V_L1Z_V_L1Z_V_L1Z_V_L1Z=w1000-h1000" class="coach-img" alt="Nazir Ibrahimov">
-            <div class="card-overlay">
-                <div class="coach-name">Nazir İbrahimov</div>
-                <div class="coach-title">Baş Məşqçi / Güc Artımı Eksperti</div>
+        <div class="img-box">
+            <img src="nazir.jpg" class="coach-img" alt="Nazir İbrahimov">
+            <div class="overlay">
+                <p class="name">Nazir İbrahimov</p>
+                <p class="title">Baş Məşqçi / Bodybuilding Eksperti</p>
             </div>
         </div>
-        <div class="info">
-            <div class="tips">
-                <h3>Məşqçi Məsləhətləri:</h3>
+        <div class="details">
+            <div class="tips-box">
+                <h3>Məşqçi Məsləhətləri</h3>
                 <ul>
                     <li>Düzgün qidalanma nəticənin 70%-idir.</li>
-                    <li>Pres əzələləri mətbəxdə qazanılır, zalda deyil.</li>
-                    <li>Hər məşqdən sonra ən azı 8 saat yatmaq vacibdir.</li>
-                    <li>Kardio məşqlərini güc məşqlərindən sonra edin.</li>
+                    <li>Əzələ inkişafı üçün sutkalıq 8 saat yuxu vacibdir.</li>
+                    <li>Hər məşqdə limitlərini bir az daha aşmağa çalış.</li>
                 </ul>
             </div>
-            <a href="tel:0702956819" class="contact-btn">📞 Nazir: 070-295-68-19</a>
+            <a href="tel:0702956819" class="btn">📞 NAZİR: 070-295-68-19</a>
         </div>
     </div>
 
     <div class="coach-card">
-        <div class="img-container">
-            <img src="https://lh3.googleusercontent.com/pw/AP1GczO_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A_O_A=w1000-h1000" class="coach-img" alt="Arif Bagirov">
-            <div class="card-overlay">
-                <div class="coach-name">Arif Bağırov</div>
-                <div class="coach-title">Baş Məşqçi / Bədən Formalaşdırma Mütəxəssisi</div>
+        <div class="img-box">
+            <img src="arif.jpg" class="coach-img" alt="Arif Bağırov">
+            <div class="overlay">
+                <p class="name">Arif Bağırov</p>
+                <p class="title">Peşəkar Məşqçi / Fitnes Analitiki</p>
             </div>
         </div>
-        <div class="info">
-            <div class="tips">
-                <h3>Məşqçi Məsləhətləri:</h3>
+        <div class="details">
+            <div class="tips-box">
+                <h3>Məşqçi Məsləhətləri</h3>
                 <ul>
-                    <li>Ağır çəkilərlə işləyərkən texnikaya diqqət edin.</li>
-                    <li>Məşq zamanı bol su içmək metabolizmanı sürətləndirir.</li>
+                    <li>Məşq zamanı bol su içmək enerjini yüksək saxlayır.</li>
                     <li>Motivasiya sizi başladır, vərdiş isə davam etdirir.</li>
-                    <li>Hər həftə çəkinizi və ölçülərinizi qeyd edin.</li>
+                    <li>Hər həftə çəki və ölçü tərəqqisini qeyd edin.</li>
                 </ul>
             </div>
-            <a href="tel:0514102531" class="contact-btn">📞 Arif: 051-410-25-31</a>
+            <a href="tel:0514102531" class="btn">📞 ARİF: 051-410-25-31</a>
         </div>
     </div>
 </div>
 
 <footer>
-    <div class="footer-logo">NB <span>FITNESS</span> ACADEMY</div>
-    © 2026 Elite Fitness Azerbaijan. Bütün hüquqlar qorunur.<br>
-    Dizayn və Proqramlaşdırma: Nazir İbrahimov
+    <p>NB FITNESS ACADEMY © 2026. Bütün hüquqlar qorunur.</p>
+    <p>Layihə Rəhbəri: Nazir İbrahimov</p>
 </footer>
 
 </body>
