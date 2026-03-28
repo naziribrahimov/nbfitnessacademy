@@ -2,219 +2,207 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS ACADEMY | FULL SYSTEM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NB FITNESS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0a0a0a; }
-        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0d0d0d; }
+        
+        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
 
-        header { text-align: center; padding: 30px; border-bottom: 2px solid var(--red); background: #000; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        header h1 { font-family: 'Orbitron'; font-size: 24px; margin: 0; letter-spacing: 4px; }
-        header h1 span { color: var(--red); }
+        /* ÜST LOGO */
+        .app-header { position: fixed; top: 0; width: 100%; height: 60px; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 1000; border-bottom: 1px solid #222; backdrop-filter: blur(10px); }
+        .app-header h1 { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 3px; margin: 0; }
+        .app-header span { color: var(--red); }
 
-        /* MƏŞQÇİLƏR */
-        .coach-container { display: flex; flex-wrap: wrap; width: 100%; }
-        .coach-card { flex: 1; min-width: 350px; position: relative; height: 95vh; overflow: hidden; border-bottom: 3px solid #111; }
-        .coach-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        /* AŞAĞI NAVİQASİYA */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 70px; background: #080808; display: flex; justify-content: space-around; align-items: center; z-index: 1000; border-top: 1px solid #222; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { text-align: center; color: #555; text-decoration: none; font-size: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .nav-item.active { color: var(--red); }
+        .nav-icon { font-size: 20px; display: block; margin-bottom: 5px; }
+
+        /* SƏHİFƏLƏR */
+        .page { display: none; padding: 70px 15px 100px; min-height: 100vh; box-sizing: border-box; }
+        .page.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ANA SƏHİFƏ */
+        .coach-card { position: relative; width: 100%; height: 75vh; border-radius: 20px; overflow: hidden; margin-bottom: 15px; border: 1px solid #1a1a1a; }
+        .coach-card img { width: 100%; height: 100%; object-fit: cover; }
         .nazir-img { object-position: center top; }
         .arif-img { object-position: center 5% !important; }
 
-        .info-box { position: absolute; bottom: 0; width: 100%; padding: 50px 30px; background: linear-gradient(transparent, rgba(0,0,0,1) 80%); box-sizing: border-box; }
-        .role { font-family: 'Orbitron'; color: var(--red); font-size: 11px; letter-spacing: 3px; font-weight: bold; margin-bottom: 10px; }
-        .name { font-family: 'Orbitron'; font-size: clamp(28px, 5vw, 42px); margin: 5px 0; text-transform: uppercase; line-height: 1.1; }
+        .overlay { position: absolute; bottom: 0; width: 100%; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,1) 85%); box-sizing: border-box; }
+        .role { font-family: 'Orbitron'; color: var(--red); font-size: 10px; letter-spacing: 2px; font-weight: bold; }
+        .coach-name { font-family: 'Orbitron'; font-size: 24px; margin: 5px 0; text-transform: uppercase; }
         
-        .btn-ws { display: inline-block; padding: 16px 40px; border-radius: 5px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 11px; margin-top: 20px; text-transform: uppercase; transition: 0.3s; }
-        .n-btn { background: var(--red); color: white; box-shadow: 0 0 15px rgba(255,0,60,0.3); }
+        .btn-ws { display: block; width: 100%; padding: 15px; text-align: center; border-radius: 10px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 11px; margin-top: 10px; text-transform: uppercase; }
+        .n-btn { background: var(--red); color: white; }
         .a-btn { background: var(--blue); color: black; }
 
-        /* KART SİSTEMİ */
-        .container { max-width: 1300px; margin: 0 auto; padding: 80px 20px; }
-        .section-title { font-family: 'Orbitron'; color: var(--gold); text-align: center; margin-bottom: 50px; font-size: 24px; letter-spacing: 5px; text-transform: uppercase; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 100px; }
-        .card { background: var(--card); border: 1px solid #1a1a1a; padding: 35px; border-radius: 15px; position: relative; transition: 0.3s; }
-        .card:hover { border-color: var(--red); transform: translateY(-5px); }
-        .card h4 { font-family: 'Orbitron'; font-size: 12px; margin: 0 0 20px; color: var(--gold); border-bottom: 1px solid #222; padding-bottom: 10px; }
-        
-        input, select { width: 100%; padding: 14px; margin-bottom: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 8px; font-family: 'Orbitron'; font-size: 13px; outline: none; }
-        .btn-action { width: 100%; padding: 15px; background: #1a1a1a; border: none; color: white; border-radius: 8px; cursor: pointer; font-family: 'Orbitron'; font-weight: bold; text-transform: uppercase; font-size: 10px; transition: 0.3s; }
-        .btn-action:hover { background: var(--red); box-shadow: 0 0 20px rgba(255,0,60,0.4); }
+        /* KARTLAR */
+        .card { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid #1a1a1a; }
+        h3 { font-family: 'Orbitron'; font-size: 12px; color: var(--gold); margin: 0 0 15px; border-left: 3px solid var(--red); padding-left: 10px; text-transform: uppercase; }
 
-        .res { margin-top: 20px; font-size: 15px; color: #ccc; line-height: 1.7; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue); }
+        input, select { width: 100%; padding: 14px; margin-bottom: 10px; background: #000; border: 1px solid #333; color: white; border-radius: 8px; font-family: 'Orbitron'; font-size: 13px; box-sizing: border-box; }
+        .btn-action { width: 100%; padding: 15px; background: #1a1a1a; border: none; color: white; border-radius: 8px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 10px; }
+        .btn-action:hover { background: var(--red); }
+
+        .res { margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--blue); font-size: 14px; line-height: 1.6; color: #ccc; }
         b { color: white; }
-
-        footer { text-align: center; padding: 80px; color: #222; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 5px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>NB <span>FITNESS</span> ACADEMY</h1>
-</header>
-
-<div class="coach-container">
-    <div class="coach-card">
-        <img src="nazir.jpg" class="nazir-img" alt="Nazir">
-        <div class="info-box">
-            <div class="role">BAŞ MƏŞQÇİ</div>
-            <h2 class="name">NAZİR İBRAHİMOV</h2>
-            <a onclick="ws('Nazir', '994702946819')" class="btn-ws n-btn">📲 WHATSAPP: 294-68-19</a>
-        </div>
+    <div class="app-header">
+        <h1>NB <span>FITNESS</span></h1>
     </div>
-    <div class="coach-card">
-        <img src="arif.jpg" class="arif-img" alt="Arif">
-        <div class="info-box">
-            <div class="role" style="color:var(--blue)">BAŞ MƏŞQÇİ</div>
-            <h2 class="name">ARİF BAĞIROV</h2>
-            <a onclick="ws('Arif', '994514102531')" class="btn-ws a-btn">📲 WHATSAPP: 410-25-31</a>
-        </div>
-    </div>
-</div>
 
-<div class="container">
-    
-    <h2 class="section-title">📊 ELİTE ANALİZ MƏRKƏZİ</h2>
-    <div class="grid">
-        <div class="card">
-            <h4>01 // BƏDƏN PASPORTU</h4>
-            <input type="number" id="age" placeholder="Yaşınız">
-            <input type="number" id="h" placeholder="Boy (sm)">
-            <input type="number" id="w" placeholder="Çəki (kq)">
-            <button class="btn-action" onclick="anal()">ANALİZİ BAŞLAT</button>
-            <div id="res1" class="res">Məlumatları daxil edin...</div>
+    <div id="home" class="page active">
+        <div class="coach-card">
+            <img src="nazir.jpg" class="nazir-img">
+            <div class="overlay">
+                <div class="role">BAŞ MƏŞQÇİ</div>
+                <h2 class="coach-name">NAZİR İBRAHİMOV</h2>
+                <a onclick="contactWS('Nazir', '994702946819')" class="btn-ws n-btn">📲 WHATSAPP İLƏ YAZ</a>
+            </div>
         </div>
-
-        <div class="card">
-            <h4>02 // GENETİK POTENSİAL</h4>
-            <input type="number" id="wr" placeholder="Bilək ölçüsü (sm)">
-            <button class="btn-action" onclick="gen()" style="background:var(--gold); color:black;">POTENSİALI SKAN ET</button>
-            <div id="res2" class="res">Sümük strukturuna görə limitin...</div>
-        </div>
-
-        <div class="card">
-            <h4>03 // METABOLİZM VƏ KALORİ</h4>
-            <button class="btn-action" onclick="cal()" style="background:var(--blue); color:black;">KALORİ EHTİYACINI HESABLA</button>
-            <div id="res3" class="res">Günlük enerji sərfi...</div>
-        </div>
-
-        <div class="card">
-            <h4>04 // SU VƏ ELEKTROLİT NORMI</h4>
-            <div id="res4" class="res">Su norması və minerallar burada görünəcək.</div>
+        <div class="coach-card">
+            <img src="arif.jpg" class="arif-img">
+            <div class="overlay">
+                <div class="role" style="color:var(--blue)">BAŞ MƏŞQÇİ</div>
+                <h2 class="coach-name">ARİF BAĞIROV</h2>
+                <a onclick="contactWS('Arif', '994514102531')" class="btn-ws a-btn">📲 WHATSAPP İLƏ YAZ</a>
+            </div>
         </div>
     </div>
 
-    <h2 class="section-title">🔬 MƏŞQ VƏ QİDA METODİKASI</h2>
-    <div class="grid">
+    <div id="analyze" class="page">
         <div class="card">
-            <h4>01 // ƏZƏLƏ SKANERİ (TEXNİKA)</h4>
-            <select id="ms">
-                <option value="sine">SİNƏ (Bench Press)</option>
-                <option value="ayaq">AYAQ (Squat)</option>
-                <option value="qol">QOL (Curl)</option>
+            <h3>BƏDƏN PASPORTU</h3>
+            <input type="number" id="age" placeholder="Yaş">
+            <input type="number" id="height" placeholder="Boy (sm)">
+            <input type="number" id="weight" placeholder="Çəki (kq)">
+            <button class="btn-action" onclick="fullAnalyze()">ANALİZ ET</button>
+            <div id="anal-res" class="res">BMI və İdeal çəki...</div>
+        </div>
+        <div class="card">
+            <h3>GENETİK POTENSİAL</h3>
+            <input type="number" id="wrist" placeholder="Bilək ölçüsü (sm)">
+            <button class="btn-action" onclick="calcGenetic()" style="background:var(--gold); color:black;">SKAN ET</button>
+            <div id="gen-res" class="res">Potensial qol ölçüsü...</div>
+        </div>
+        <div class="card">
+            <h3>METABOLİZM VƏ KALORİ</h3>
+            <button class="btn-action" onclick="calcBMR()" style="background:var(--blue); color:black;">HESABLA</button>
+            <div id="bmr-res" class="res">Günlük kalori ehtiyacı...</div>
+        </div>
+        <div class="card">
+            <h3>SU VƏ ELEKTROLİT</h3>
+            <div id="water-res" class="res">Su norması...</div>
+        </div>
+    </div>
+
+    <div id="method" class="page">
+        <div class="card">
+            <h3>ƏZƏLƏ TEXNİKASI</h3>
+            <select id="muscle">
+                <option value="sinə">Sinə (Bench)</option>
+                <option value="ayaq">Ayaq (Squat)</option>
             </select>
-            <button class="btn-action" onclick="scan()">SKAN ET</button>
-            <div id="m1" class="res">Düzgün texnika tövsiyyəsi...</div>
+            <button class="btn-action" onclick="scanM()">YOXLA</button>
+            <div id="m-res" class="res">Metodik tövsiyyə...</div>
         </div>
-
         <div class="card">
-            <h4>02 // ZƏİF NÖQTƏ HƏLLİ</h4>
-            <select id="wp">
-                <option value="s">Sinə inkişaf etmir</option>
-                <option value="q">Qollar yerində sayır</option>
-                <option value="k">Kürək enlənmir</option>
+            <h3>ZƏİF NÖQTƏ HƏLLİ</h3>
+            <select id="weak">
+                <option value="s">Sinə böyümür</option>
+                <option value="q">Qollar dayanışdadır</option>
             </select>
-            <button class="btn-action" onclick="fix()">PROBLEMİ HƏLL ET</button>
-            <div id="m2" class="res">Mühəndis həlli...</div>
+            <button class="btn-action" onclick="fixWeak()">PROBLEMİ HƏLL ET</button>
+            <div id="weak-res" class="res">Mühəndis həlli...</div>
         </div>
-
         <div class="card">
-            <h4>03 // MAKRO QİDA BÖLGÜSÜ</h4>
-            <button class="btn-action" onclick="mac()" style="background:var(--gold); color:black;">QİDA PLANINI ÇIXAR</button>
-            <div id="m3" class="res">Protein, Karbo, Yağ...</div>
+            <h3>MAKRO QİDA BÖLGÜSÜ</h3>
+            <button class="btn-action" onclick="calcMacros()" style="background:var(--gold); color:black;">HESABLA</button>
+            <div id="macro-res" class="res">Protein, Karbohidrat, Yağ...</div>
         </div>
-
         <div class="card">
-            <h4>04 // MƏŞQ SPLİTİ TÖVSİYYƏSİ</h4>
-            <select id="day">
+            <h3>MƏŞQ SPLİTİ</h3>
+            <select id="days">
                 <option value="3">Həftədə 3 gün</option>
-                <option value="4">Həftədə 4 gün</option>
                 <option value="5">Həftədə 5 gün</option>
             </select>
-            <button class="btn-action" onclick="spl()">İDEAL PLANI GÖR</button>
-            <div id="m4" class="res">Həftəlik bölüşdürmə...</div>
+            <button class="btn-action" onclick="getSplit()">TÖVSİYYƏ GÖR</button>
+            <div id="split-res" class="res">İdeal proqram...</div>
         </div>
     </div>
 
-</div>
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="showPage('home', this)">
+            <span class="nav-icon">🏠</span>ANA SƏHİFƏ
+        </div>
+        <div class="nav-item" onclick="showPage('analyze', this)">
+            <span class="nav-icon">📊</span>ANALİZ
+        </div>
+        <div class="nav-item" onclick="showPage('method', this)">
+            <span class="nav-icon">🔬</span>METOD
+        </div>
+    </div>
 
-<script>
-    function ws(c, p) {
-        let m = `Salam ${c} bəy, rəsmi saytdan gəlirəm. Sizinlə məşqlərə başlamaq istəyirəm!`;
-        window.open(`https://wa.me/${p}?text=${encodeURIComponent(m)}`, '_blank');
-    }
-
-    // ANALİZ SİSTEMİ
-    function anal() {
-        let h = document.getElementById('h').value / 100;
-        let w = document.getElementById('w').value;
-        let a = document.getElementById('age').value;
-        if(h && w) {
-            let bmi = (w/(h*h)).toFixed(1);
-            let idl = (22.5*h*h).toFixed(0);
-            document.getElementById('res1').innerHTML = `BMI: <b>${bmi}</b><br>İdeal Çəki: <b>${idl} kq</b><br>Metabolik Yaş: <b>${parseInt(a)-2}</b>`;
-            document.getElementById('res4').innerHTML = `Gündəlik Su: <b>${(w*0.035).toFixed(1)} L</b><br>Məşqdə: <b>+700ml su + 1 çimdik duz</b>`;
+    <script>
+        function showPage(pageId, element) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            element.classList.add('active');
+            window.scrollTo(0, 0);
         }
-    }
 
-    function gen() {
-        let wr = document.getElementById('wr').value;
-        if(wr) {
-            let s = wr > 17 ? 'Geniş/Ağır' : 'İncə/Orta';
-            document.getElementById('res2').innerHTML = `Skelet tipi: <b>${s}</b><br>Potensial Qol: <b>${parseInt(wr)+25} sm</b>`;
+        function contactWS(coach, phone) {
+            let msg = `Salam ${coach} bəy, tətbiqdən gəlirəm. Məşqlərə başlamaq istəyirəm!`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
-    }
 
-    function cal() {
-        let w = document.getElementById('w').value;
-        if(w) document.getElementById('res3').innerHTML = `Bazal (BMR): <b>${w*24} kkal</b><br>Kütlə Artımı: <b>${w*35} kkal</b>`;
-    }
+        function fullAnalyze() {
+            let h = document.getElementById('height').value / 100;
+            let w = document.getElementById('weight').value;
+            if(h && w) {
+                let bmi = (w/(h*h)).toFixed(1);
+                document.getElementById('anal-res').innerHTML = `BMI: <b>${bmi}</b> | İdeal: <b>${(22.5*h*h).toFixed(0)} kq</b>`;
+                document.getElementById('water-res').innerHTML = `Gündəlik Su: <b>${(w*0.035).toFixed(1)} L</b>`;
+            }
+        }
 
-    // METODİKA SİSTEMİ
-    function scan() {
-        const d = { 
-            sine: "Həll: Dirçəkləri 45 dərəcə saxla, barı sinəyə toxundur.", 
-            ayaq: "Həll: Dabanlar yerdə, beli bükmədən tam otur.", 
-            qol: "Həll: Dirçəkləri gövdəyə sabitlə, yuxarıda 1 san sıx." 
-        };
-        document.getElementById('m1').innerText = d[document.getElementById('ms').value];
-    }
+        function calcGenetic() {
+            let wr = document.getElementById('wrist').value;
+            if(wr) document.getElementById('gen-res').innerHTML = `Potensial qol ölçüsü: <b>${parseInt(wr)+25} sm</b>`;
+        }
 
-    function fix() {
-        const d = { 
-            s: "Həll: Dumbbell Fly əlavə et, mənfi fazanı 3 san saxla.", 
-            q: "Həll: Skullcrushers və ağır Hammer Curls tətbiq et.", 
-            k: "Həll: Dartışlarda dirsəyi tam arxaya çək, barfiksə fokuslan." 
-        };
-        document.getElementById('m2').innerText = d[document.getElementById('wp').value];
-    }
+        function calcBMR() {
+            let w = document.getElementById('weight').value;
+            if(w) document.getElementById('bmr-res').innerHTML = `Bazal (BMR): <b>${w*24} kkal</b>`;
+        }
 
-    function mac() {
-        let w = document.getElementById('w').value;
-        if(w) document.getElementById('m3').innerHTML = `Protein: <b>${w*2}q</b><br>Yağ: <b>${w*0.8}q</b><br>Karbo: <b>${w*4}q</b>`;
-    }
+        function scanM() {
+            const d = { sinə: "Barı yavaş endir, sinədə 1 san gözlə.", ayaq: "Dabanları yerdən kəsmə, tam otur." };
+            document.getElementById('m-res').innerText = d[document.getElementById('muscle').value];
+        }
 
-    function spl() {
-        const d = { 
-            '3': 'Tövsiyyə: <b>Full Body</b> (Bütün bədən).', 
-            '4': 'Tövsiyyə: <b>Upper/Lower</b> (Üst və Alt).', 
-            '5': 'Tövsiyyə: <b>Push/Pull/Legs</b> (İtələ/Dart/Ayaq).' 
-        };
-        document.getElementById('m4').innerHTML = d[document.getElementById('day').value];
-    }
-</script>
+        function fixWeak() {
+            const d = { s: "Incline Press və Dumbbell Fly əlavə et.", q: "Skullcrushers və ağır Hammer Curls tətbiq et." };
+            document.getElementById('weak-res').innerText = d[document.getElementById('weak').value];
+        }
 
-<footer>NB FITNESS ACADEMY // EST 2026 // BAKU</footer>
+        function calcMacros() {
+            let w = document.getElementById('weight').value;
+            if(w) document.getElementById('macro-res').innerHTML = `Protein: <b>${w*2}q</b> | Karbo: <b>${w*3}q</b>`;
+        }
 
+        function getSplit() {
+            let d = document.getElementById('days').value;
+            document.getElementById('split-res').innerHTML = d == '3' ? "Tövsiyyə: <b>Full Body</b>" : "Tövsiyyə: <b>Push/Pull/Legs</b>";
+        }
+    </script>
 </body>
 </html>
