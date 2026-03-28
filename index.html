@@ -11,44 +11,47 @@
         body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
 
         /* ÜST LOGO */
-        .app-header { position: fixed; top: 0; width: 100%; height: 60px; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 1000; border-bottom: 1px solid #222; backdrop-filter: blur(10px); }
+        .app-header { position: fixed; top: 0; width: 100%; height: 60px; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; border-bottom: 1px solid #222; backdrop-filter: blur(10px); }
         .app-header h1 { font-family: 'Orbitron'; font-size: 18px; letter-spacing: 3px; margin: 0; }
         .app-header span { color: var(--red); }
 
-        /* AŞAĞI NAVİQASİYA */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 70px; background: #080808; display: flex; justify-content: space-around; align-items: center; z-index: 1000; border-top: 1px solid #222; padding-bottom: env(safe-area-inset-bottom); }
-        .nav-item { text-align: center; color: #555; text-decoration: none; font-size: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        /* AŞAĞI NAVİQASİYA (MOBILE APP STYLE) */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 75px; background: #080808; display: flex; justify-content: space-around; align-items: center; z-index: 1000; border-top: 1px solid #222; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { text-align: center; color: #555; text-decoration: none; font-size: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .nav-item.active { color: var(--red); }
-        .nav-icon { font-size: 20px; display: block; margin-bottom: 5px; }
+        .nav-icon { font-size: 22px; display: block; margin-bottom: 4px; }
 
-        /* SƏHİFƏLƏR */
-        .page { display: none; padding: 70px 15px 100px; min-height: 100vh; box-sizing: border-box; }
-        .page.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* SƏHİFƏ SİSTEMİ */
+        .page { display: none; padding: 80px 15px 110px; min-height: 100vh; box-sizing: border-box; }
+        .page.active { display: block; animation: pageIn 0.3s ease-out; }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ANA SƏHİFƏ */
-        .coach-card { position: relative; width: 100%; height: 75vh; border-radius: 20px; overflow: hidden; margin-bottom: 15px; border: 1px solid #1a1a1a; }
+        /* ANA SƏHİFƏ - MƏŞQÇİLƏR */
+        .coach-card { position: relative; width: 100%; height: 78vh; border-radius: 20px; overflow: hidden; margin-bottom: 15px; border: 1px solid #1a1a1a; }
         .coach-card img { width: 100%; height: 100%; object-fit: cover; }
         .nazir-img { object-position: center top; }
-        .arif-img { object-position: center 5% !important; }
+        .arif-img { object-position: center 8% !important; } /* Arifin bədəni tam görünsün */
 
-        .overlay { position: absolute; bottom: 0; width: 100%; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,1) 85%); box-sizing: border-box; }
-        .role { font-family: 'Orbitron'; color: var(--red); font-size: 10px; letter-spacing: 2px; font-weight: bold; }
-        .coach-name { font-family: 'Orbitron'; font-size: 24px; margin: 5px 0; text-transform: uppercase; }
+        .overlay { position: absolute; bottom: 0; width: 100%; padding: 35px 25px; background: linear-gradient(transparent, rgba(0,0,0,1) 85%); box-sizing: border-box; }
+        .role { font-family: 'Orbitron'; color: var(--red); font-size: 10px; letter-spacing: 2px; font-weight: bold; margin-bottom: 5px; }
+        .coach-name { font-family: 'Orbitron'; font-size: 26px; margin: 5px 0; text-transform: uppercase; line-height: 1; }
         
-        .btn-ws { display: block; width: 100%; padding: 15px; text-align: center; border-radius: 10px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 11px; margin-top: 10px; text-transform: uppercase; }
-        .n-btn { background: var(--red); color: white; }
-        .a-btn { background: var(--blue); color: black; }
+        .btn-ws { display: block; width: 100%; padding: 16px; text-align: center; border-radius: 12px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 11px; margin-top: 15px; text-transform: uppercase; transition: 0.3s; }
+        .n-btn { background: var(--red); color: white; box-shadow: 0 4px 15px rgba(255,0,60,0.3); }
+        .a-btn { background: var(--blue); color: black; box-shadow: 0 4px 15px rgba(0,247,255,0.3); }
 
-        /* KARTLAR */
-        .card { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 15px; border: 1px solid #1a1a1a; }
-        h3 { font-family: 'Orbitron'; font-size: 12px; color: var(--gold); margin: 0 0 15px; border-left: 3px solid var(--red); padding-left: 10px; text-transform: uppercase; }
+        /* MENYU KARTLARI */
+        .card { background: var(--card); border-radius: 18px; padding: 25px; margin-bottom: 20px; border: 1px solid #1a1a1a; transition: 0.3s; }
+        .card:active { transform: scale(0.98); border-color: var(--red); }
+        h3 { font-family: 'Orbitron'; font-size: 13px; color: var(--gold); margin: 0 0 18px; border-left: 3px solid var(--red); padding-left: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-        input, select { width: 100%; padding: 14px; margin-bottom: 10px; background: #000; border: 1px solid #333; color: white; border-radius: 8px; font-family: 'Orbitron'; font-size: 13px; box-sizing: border-box; }
-        .btn-action { width: 100%; padding: 15px; background: #1a1a1a; border: none; color: white; border-radius: 8px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 10px; }
-        .btn-action:hover { background: var(--red); }
+        input, select { width: 100%; padding: 15px; margin-bottom: 12px; background: #000; border: 1px solid #252525; color: white; border-radius: 10px; font-family: 'Orbitron'; font-size: 14px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--blue); }
+        
+        .btn-action { width: 100%; padding: 16px; background: #1a1a1a; border: none; color: white; border-radius: 10px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+        .btn-action:active { background: var(--red); }
 
-        .res { margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--blue); font-size: 14px; line-height: 1.6; color: #ccc; }
+        .res { margin-top: 18px; padding: 18px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 4px solid var(--blue); font-size: 14px; line-height: 1.7; color: #ddd; }
         b { color: white; }
     </style>
 </head>
@@ -60,7 +63,7 @@
 
     <div id="home" class="page active">
         <div class="coach-card">
-            <img src="nazir.jpg" class="nazir-img">
+            <img src="nazir.jpg" class="nazir-img" alt="Nazir">
             <div class="overlay">
                 <div class="role">BAŞ MƏŞQÇİ</div>
                 <h2 class="coach-name">NAZİR İBRAHİMOV</h2>
@@ -68,7 +71,7 @@
             </div>
         </div>
         <div class="coach-card">
-            <img src="arif.jpg" class="arif-img">
+            <img src="arif.jpg" class="arif-img" alt="Arif">
             <div class="overlay">
                 <div class="role" style="color:var(--blue)">BAŞ MƏŞQÇİ</div>
                 <h2 class="coach-name">ARİF BAĞIROV</h2>
@@ -80,26 +83,28 @@
     <div id="analyze" class="page">
         <div class="card">
             <h3>BƏDƏN PASPORTU</h3>
-            <input type="number" id="age" placeholder="Yaş">
-            <input type="number" id="height" placeholder="Boy (sm)">
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="age" placeholder="Yaş">
+                <input type="number" id="height" placeholder="Boy (sm)">
+            </div>
             <input type="number" id="weight" placeholder="Çəki (kq)">
-            <button class="btn-action" onclick="fullAnalyze()">ANALİZ ET</button>
-            <div id="anal-res" class="res">BMI və İdeal çəki...</div>
+            <button class="btn-action" onclick="fullAnalyze()">ANALİZİ BAŞLAT</button>
+            <div id="anal-res" class="res">BMI və İdeal çəki hesablanacaq.</div>
         </div>
         <div class="card">
             <h3>GENETİK POTENSİAL</h3>
             <input type="number" id="wrist" placeholder="Bilək ölçüsü (sm)">
-            <button class="btn-action" onclick="calcGenetic()" style="background:var(--gold); color:black;">SKAN ET</button>
-            <div id="gen-res" class="res">Potensial qol ölçüsü...</div>
+            <button class="btn-action" onclick="calcGenetic()" style="background:var(--gold); color:black;">POTENSİALI SKAN ET</button>
+            <div id="gen-res" class="res">Sümük strukturuna görə limitin...</div>
         </div>
         <div class="card">
             <h3>METABOLİZM VƏ KALORİ</h3>
-            <button class="btn-action" onclick="calcBMR()" style="background:var(--blue); color:black;">HESABLA</button>
-            <div id="bmr-res" class="res">Günlük kalori ehtiyacı...</div>
+            <button class="btn-action" onclick="calcBMR()" style="background:var(--blue); color:black;">KALORİ EHTİYACINI GÖR</button>
+            <div id="bmr-res" class="res">Günlük enerji sərfi...</div>
         </div>
         <div class="card">
-            <h3>SU VƏ ELEKTROLİT</h3>
-            <div id="water-res" class="res">Su norması...</div>
+            <h3>SU VƏ ELEKTROLİT NORMI</h3>
+            <div id="water-res" class="res">Çəkinizə görə su norması...</div>
         </div>
     </div>
 
@@ -107,34 +112,37 @@
         <div class="card">
             <h3>ƏZƏLƏ TEXNİKASI</h3>
             <select id="muscle">
-                <option value="sinə">Sinə (Bench)</option>
-                <option value="ayaq">Ayaq (Squat)</option>
+                <option value="sinə">SİNƏ (Bench Press)</option>
+                <option value="ayaq">AYAQ (Squat)</option>
+                <option value="qol">QOL (Bicep Curl)</option>
             </select>
-            <button class="btn-action" onclick="scanM()">YOXLA</button>
-            <div id="m-res" class="res">Metodik tövsiyyə...</div>
+            <button class="btn-action" onclick="scanM()">SKAN ET</button>
+            <div id="m-res" class="res">Düzgün texnika tövsiyyəsi...</div>
         </div>
         <div class="card">
             <h3>ZƏİF NÖQTƏ HƏLLİ</h3>
             <select id="weak">
-                <option value="s">Sinə böyümür</option>
-                <option value="q">Qollar dayanışdadır</option>
+                <option value="s">Sinə inkişaf etmir</option>
+                <option value="q">Qollar yerində sayır</option>
+                <option value="k">Kürək enlənmir</option>
             </select>
             <button class="btn-action" onclick="fixWeak()">PROBLEMİ HƏLL ET</button>
-            <div id="weak-res" class="res">Mühəndis həlli...</div>
+            <div id="weak-res" class="res">Mühəndis yanaşması...</div>
         </div>
         <div class="card">
             <h3>MAKRO QİDA BÖLGÜSÜ</h3>
-            <button class="btn-action" onclick="calcMacros()" style="background:var(--gold); color:black;">HESABLA</button>
-            <div id="macro-res" class="res">Protein, Karbohidrat, Yağ...</div>
+            <button class="btn-action" onclick="calcMacros()" style="background:var(--gold); color:black;">QİDA PLANINI ÇIXAR</button>
+            <div id="macro-res" class="res">Protein, Karbo, Yağ...</div>
         </div>
         <div class="card">
-            <h3>MƏŞQ SPLİTİ</h3>
+            <h3>MƏŞQ SPLİTİ TÖVSİYYƏSİ</h3>
             <select id="days">
                 <option value="3">Həftədə 3 gün</option>
+                <option value="4">Həftədə 4 gün</option>
                 <option value="5">Həftədə 5 gün</option>
             </select>
-            <button class="btn-action" onclick="getSplit()">TÖVSİYYƏ GÖR</button>
-            <div id="split-res" class="res">İdeal proqram...</div>
+            <button class="btn-action" onclick="getSplit()">İDEAL PROQRAMI GÖR</button>
+            <div id="split-res" class="res">Həftəlik bölüşdürmə...</div>
         </div>
     </div>
 
@@ -160,48 +168,58 @@
         }
 
         function contactWS(coach, phone) {
-            let msg = `Salam ${coach} bəy, tətbiqdən gəlirəm. Məşqlərə başlamaq istəyirəm!`;
+            let msg = `Salam ${coach} bəy, rəsmi tətbiqdən gəlirəm. Sizinlə məşqlərə başlamaq istəyirəm!`;
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function fullAnalyze() {
             let h = document.getElementById('height').value / 100;
             let w = document.getElementById('weight').value;
+            let age = document.getElementById('age').value;
             if(h && w) {
                 let bmi = (w/(h*h)).toFixed(1);
-                document.getElementById('anal-res').innerHTML = `BMI: <b>${bmi}</b> | İdeal: <b>${(22.5*h*h).toFixed(0)} kq</b>`;
-                document.getElementById('water-res').innerHTML = `Gündəlik Su: <b>${(w*0.035).toFixed(1)} L</b>`;
+                document.getElementById('anal-res').innerHTML = `BMI: <b>${bmi}</b> | İdeal: <b>${(22.5*h*h).toFixed(0)} kq</b><br>Metabolik Yaş: <b>${parseInt(age || 0)-2}</b>`;
+                document.getElementById('water-res').innerHTML = `Gündəlik Su: <b>${(w*0.035).toFixed(1)} Litr</b><br>Məşqdə: <b>+700ml su + 1 çimdik duz</b>`;
             }
         }
 
         function calcGenetic() {
             let wr = document.getElementById('wrist').value;
-            if(wr) document.getElementById('gen-res').innerHTML = `Potensial qol ölçüsü: <b>${parseInt(wr)+25} sm</b>`;
+            if(wr) document.getElementById('gen-res').innerHTML = `Skelet tipi: <b>${wr > 17 ? 'Geniş' : 'İncə/Orta'}</b><br>Potensial Qol: <b>${parseInt(wr)+25} sm</b>`;
         }
 
         function calcBMR() {
             let w = document.getElementById('weight').value;
-            if(w) document.getElementById('bmr-res').innerHTML = `Bazal (BMR): <b>${w*24} kkal</b>`;
+            if(w) document.getElementById('bmr-res').innerHTML = `Bazal (BMR): <b>${w*24} kkal</b><br>Kütlə üçün: <b>${w*35} kkal</b>`;
         }
 
         function scanM() {
-            const d = { sinə: "Barı yavaş endir, sinədə 1 san gözlə.", ayaq: "Dabanları yerdən kəsmə, tam otur." };
+            const d = { 
+                sinə: "Həll: Dirçəkləri 45 dərəcə saxla, barı sinəyə toxundur.", 
+                ayaq: "Həll: Dabanlar yerdə, beli bükmədən tam otur.", 
+                qol: "Həll: Dirçəkləri gövdəyə sabitlə, yuxarıda 1 san sıx." 
+            };
             document.getElementById('m-res').innerText = d[document.getElementById('muscle').value];
         }
 
         function fixWeak() {
-            const d = { s: "Incline Press və Dumbbell Fly əlavə et.", q: "Skullcrushers və ağır Hammer Curls tətbiq et." };
+            const d = { 
+                s: "Həll: Dumbbell Fly əlavə et, mənfi fazanı 3 san saxla.", 
+                q: "Həll: Skullcrushers və ağır Hammer Curls tətbiq et.", 
+                k: "Həll: Dartışlarda dirsəyi tam arxaya çək, barfiksə fokuslan." 
+            };
             document.getElementById('weak-res').innerText = d[document.getElementById('weak').value];
         }
 
         function calcMacros() {
             let w = document.getElementById('weight').value;
-            if(w) document.getElementById('macro-res').innerHTML = `Protein: <b>${w*2}q</b> | Karbo: <b>${w*3}q</b>`;
+            if(w) document.getElementById('macro-res').innerHTML = `Protein: <b>${w*2}q</b> | Yağ: <b>${w*0.8}q</b> | Karbo: <b>${w*4}q</b>`;
         }
 
         function getSplit() {
             let d = document.getElementById('days').value;
-            document.getElementById('split-res').innerHTML = d == '3' ? "Tövsiyyə: <b>Full Body</b>" : "Tövsiyyə: <b>Push/Pull/Legs</b>";
+            const p = { '3': 'Full Body', '4': 'Upper/Lower', '5': 'Push/Pull/Legs' };
+            document.getElementById('split-res').innerHTML = `Tövsiyyə olunan split: <b>${p[d]}</b>`;
         }
     </script>
 </body>
