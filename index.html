@@ -3,32 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS | OFFICIAL ACADEMY</title>
+    <title>NB FITNESS ACADEMY | ULTIMATE V17.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --red: #ff003c; 
-            --blue: #00f7ff; 
-            --gold: #ffbd39; 
-            --dark: #000000; 
-            --card: #0d0d0d; 
-            --border: #1a1a1a;
-        }
-        
+        :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0d0d0d; }
         body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
 
-        header { 
-            text-align: center; padding: 25px; border-bottom: 2px solid var(--red); 
-            background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
-        }
-        header h1 { font-family: 'Orbitron'; font-size: clamp(20px, 4vw, 28px); margin: 0; letter-spacing: 5px; text-transform: uppercase; }
-        header h1 span { color: var(--red); text-shadow: 0 0 10px var(--red); }
+        header { text-align: center; padding: 25px; border-bottom: 2px solid var(--red); background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        header h1 { font-family: 'Orbitron'; font-size: clamp(20px, 4vw, 28px); margin: 0; letter-spacing: 4px; text-transform: uppercase; }
+        header h1 span { color: var(--red); }
 
-        /* MƏŞQÇİ ŞƏKİLLƏRİ */
+        /* MƏŞQÇİLƏR - ARİFİN ŞƏKLİ YUXARI SÜRÜŞDÜRÜLDÜ */
         .coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0; }
-        .coach-card { position: relative; height: 95vh; overflow: hidden; border-bottom: 3px solid var(--border); }
-        .coach-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.8s ease; }
+        .coach-card { position: relative; height: 95vh; overflow: hidden; border-bottom: 3px solid #1a1a1a; }
+        .coach-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
         .coach-card:hover img { transform: scale(1.05); }
+
+        /* ARİFİN ŞƏKLİNİ YUXARI SÜRÜŞDÜRMƏK ÜÇÜN XÜSUSİ STİL */
+        .arif-img { object-position: center 20% !important; } /* Bu, şəkli 20% yuxarı qaldırır */
+        .nazir-img { object-position: center top; }
 
         .info-overlay { 
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 60px 40px; 
@@ -37,58 +30,50 @@
         .role { font-family: 'Orbitron'; font-size: 14px; letter-spacing: 5px; font-weight: bold; margin-bottom: 5px; }
         .name { font-family: 'Orbitron'; font-size: clamp(35px, 5vw, 50px); font-weight: 900; margin: 10px 0; text-transform: uppercase; line-height: 1; }
         
-        /* WHATSAPP DÜYMƏLƏRİ - RƏNGLİ */
         .ws-link { 
             display: inline-flex; align-items: center; gap: 12px; padding: 16px 40px; 
             text-decoration: none; font-family: 'Orbitron'; font-weight: bold; 
             border-radius: 4px; font-size: 12px; transition: 0.4s; margin-top: 20px;
-            text-transform: uppercase; border: 1px solid transparent;
+            text-transform: uppercase;
         }
         .n-btn { background: var(--red); color: white; box-shadow: 0 5px 25px rgba(255, 0, 60, 0.4); }
         .a-btn { background: var(--blue); color: black; box-shadow: 0 5px 25px rgba(0, 247, 255, 0.4); }
-        .ws-link:hover { transform: translateY(-3px); filter: brightness(1.2); border-color: white; }
 
-        /* QİDA MƏSLƏHƏTİ - GOLD VURĞU */
-        .tip-section { 
-            background: var(--card); border: 1px solid var(--border); margin: 60px auto; 
-            padding: 40px; max-width: 1000px; border-radius: 20px; text-align: center; 
-            border-left: 5px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        .tip-section h2 { font-family: 'Orbitron'; color: var(--gold); font-size: 18px; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
-        #daily-tip { font-style: italic; color: #f0f0f0; font-size: 20px; line-height: 1.6; font-weight: 300; }
-
-        /* DASHBOARD TOOLS - NEON BORDERS */
+        /* DASHBOARD GRID - BÜTÜN FUNKSİYALAR */
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .tool-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 35px; transition: 0.3s; }
-        .tool-card:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255, 0, 60, 0.1); }
-        h3 { font-family: 'Orbitron'; font-size: 15px; color: var(--gold); border-bottom: 1px solid #222; padding-bottom: 15px; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tool-card { background: var(--card); border: 1px solid #1a1a1a; border-radius: 20px; padding: 35px; transition: 0.3s; }
+        .tool-card:hover { border-color: var(--red); }
+        h3 { font-family: 'Orbitron'; font-size: 15px; color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 15px; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        input, select { 
-            width: 100%; padding: 15px; margin: 12px 0; background: #000; 
-            border: 1px solid #333; color: white; border-radius: 5px; font-family: 'Orbitron'; 
-            box-sizing: border-box; font-size: 14px; outline: none; transition: 0.3s;
-        }
+        input, select { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #333; color: white; border-radius: 5px; font-family: 'Orbitron'; box-sizing: border-box; font-size: 14px; outline: none; transition: 0.3s; }
         input:focus { border-color: var(--blue); }
-        
-        .btn-act { 
-            width: 100%; padding: 16px; border: none; border-radius: 5px; 
-            font-family: 'Orbitron'; font-weight: bold; cursor: pointer; 
-            background: #1a1a1a; color: white; transition: 0.3s; margin-top: 10px; 
-            font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .btn-act:hover { background: var(--red); box-shadow: 0 5px 15px rgba(255, 0, 60, 0.3); }
+        .btn-act { width: 100%; padding: 16px; border: none; border-radius: 5px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; background: #1a1a1a; color: white; transition: 0.3s; margin-top: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-act:hover { background: var(--red); }
 
         .res-box { margin-top: 20px; padding: 18px; background: rgba(0,0,0,0.7); border-radius: 8px; border-left: 4px solid var(--blue); font-size: 15px; color: #eee; min-height: 30px; }
+
+        /* Transform Slayderi (12. Transformasiya) */
+        .transform-slider { width: 100%; height: 300px; position: relative; border-radius: 10px; overflow: hidden; margin-top: 20px; cursor: ew-resize; }
+        .t-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .t-before { filter: grayscale(100%); }
+        .t-after { clip-path: inset(0 0 0 100%); transition: clip-path 0.5s; }
+        .transform-slider:hover .t-after { clip-path: inset(0 0 0 0); }
+
+        /* Liderlər Lövhəsi (7. Hall of Fame) */
+        .leader-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
+
+        /* Enerji Bar (6. Energy Bar - Top Right) */
+        #energy-hud { position: fixed; top: 20px; right: 20px; z-index: 1000; font-family: 'Orbitron'; color: var(--blue); text-shadow: 0 0 10px var(--blue); border: 1px solid var(--blue); padding: 8px 15px; border-radius: 50px; font-size: 10px; background: rgba(0,0,0,0.8); }
 
         .timer-val { font-size: 50px; font-family: 'Orbitron'; color: var(--red); text-align: center; margin: 15px 0; text-shadow: 0 0 15px rgba(255, 0, 60, 0.5); }
 
         footer { text-align: center; padding: 100px 20px; color: #222; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 4px; border-top: 1px solid #111; }
-
-        @media (max-width: 768px) { .coach-card { height: 80vh; } }
     </style>
 </head>
 <body>
+
+<div id="energy-hud">POWER: <span id="e-val">0%</span></div>
 
 <header>
     <h1>NB <span>FITNESS</span> ACADEMY</h1>
@@ -96,7 +81,7 @@
 
 <div class="coach-grid">
     <div class="coach-card">
-        <img src="nazir.jpg" alt="Nazir İbrahimov">
+        <img src="nazir.jpg" class="nazir-img" alt="Nazir İbrahimov">
         <div class="info-overlay">
             <div class="role" style="color: var(--red);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">NAZİR İBRAHİMOV</h2>
@@ -104,7 +89,7 @@
         </div>
     </div>
     <div class="coach-card">
-        <img src="arif.jpg" alt="Arif Bağırov">
+        <img src="arif.jpg" class="arif-img" alt="Arif Bağırov">
         <div class="info-overlay">
             <div class="role" style="color: var(--blue);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">ARİF BAĞIROV</h2>
@@ -122,22 +107,66 @@
 
     <div class="dashboard">
         <div class="tool-card">
-            <h3>📈 3 AYLIQ İNKİŞAF PLANI</h3>
-            <input type="number" id="arm" placeholder="Cari qol ölçüsü (sm)">
-            <button onclick="predict()" class="btn-act">ANALİZİ BAŞLAT</button>
+            <h3>📈 3 AYLIQ İNKİŞAF</h3>
+            <p>Mövcud ölçülərini yaz, gələcəyini gör:</p>
+            <input type="number" id="cur-arm" placeholder="Qol ölçüsü (sm)">
+            <button onclick="predict()" class="btn-act" style="background:var(--blue); color:black;">3 AY SONRANI GÖR</button>
             <div id="p-res" class="res-box"></div>
         </div>
 
         <div class="tool-card">
-            <h3>🔍 ƏZƏLƏ SKANERİ (AI)</h3>
-            <select id="ms">
+            <h3>🔍 ƏZƏLƏ SKANERİ (X-RAY)</h3>
+            <select id="m-select">
                 <option value="sinə">SİNƏ ƏZƏLƏSİ</option>
                 <option value="ayaq">AYAQ ƏZƏLƏSİ</option>
                 <option value="qol">QOL ƏZƏLƏSİ</option>
                 <option value="kürək">KÜRƏK ƏZƏLƏSİ</option>
             </select>
-            <button onclick="scan()" class="btn-act">SKAN ET</button>
+            <button onclick="scan()" class="btn-act">METODU ÖYRƏN</button>
             <div id="m-res" class="res-box"></div>
+        </div>
+
+        <div class="card">
+            <h3>🧬 GENETİK TEST</h3>
+            <select id="q1">
+                <option value="1">Nazik / İncə biləklər</option>
+                <option value="2">Orta / Güclü biləklər</option>
+            </select>
+            <button onclick="checkBody()" class="btn-act" style="background:white; color:black;">TİPİ ÖYRƏN</button>
+            <div id="body-res" class="res-box"></div>
+        </div>
+
+        <div class="tool-card">
+            <h3>⚡ ENERJİ SƏVİYYƏN</h3>
+            <select id="sleep">
+                <option value="40">Yuxu: < 6 saat</option>
+                <option value="100">Yuxu: 8+ saat</option>
+            </select>
+            <select id="food">
+                <option value="30">Yemək: Qeyri-sağlam</option>
+                <option value="100">Yemək: Proteinli</option>
+            </select>
+            <button onclick="updateEnergy()" class="btn-act" style="background:var(--blue); color:black;">BATAREYANI DOLDUR</button>
+        </div>
+
+        <div class="tool-card" style="border-color: var(--gold);">
+            <h3 style="color: var(--gold);">🏆 LİDERLƏR (HALL OF FAME)</h3>
+            <div class="leader-item"><div>Elvin M.</div> <div style="color:var(--blue)">-12kq</div></div>
+            <div class="leader-item"><div>Rauf S.</div> <div style="color:var(--red)">210kq DL</div></div>
+        </div>
+
+        <div class="tool-card">
+            <h3>🎧 WORKOUT BEATS</h3>
+            <button onclick="beastActivation()" class="btn-act" style="background:var(--red); color:white;">🔥 BEAST MODE (NIGHT)</button>
+        </div>
+
+        <div class="tool-card">
+            <h3>📸 TRANSFORM SAMPLES</h3>
+            <div class="transform-slider">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500" class="t-img t-before">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c64b52d3?w=500" class="t-img t-after">
+            </div>
+            <p style="font-size:10px; color:#333; text-align:center; margin-top:5px;">Mausu gətir və 3 ayı gör ↑</p>
         </div>
 
         <div class="tool-card">
@@ -146,66 +175,44 @@
             <button onclick="startT()" class="btn-act" style="background:var(--red); color:white;">BAŞLAT (60 SAN)</button>
         </div>
 
-        <div class="tool-card">
-            <h3>🍗 PROTEİN KALKULYATORU</h3>
-            <input type="number" id="weight" placeholder="Bədən çəkisi (kq)">
-            <button onclick="calcP()" class="btn-act">HESABLA</button>
-            <div id="pr-res" class="res-box"></div>
-        </div>
     </div>
-
 </div>
 
 <script>
     const tips = [
-        "Məşqdən dərhal sonra protein və sürətli karbohidrat bərpanı 40% sürətləndirir.",
-        "Su normanı mütləq tamamla (Çəki x 0.033). Əzələlərin 75%-i sudan ibarətdir.",
-        "Kompleks karbohidratlar (yulaf, qəhvəyi düyü) gün boyu güclü qalmağı təmin edir.",
-        "Kazein proteini (kəsmik) yuxu zamanı əzələləri qidalandırır.",
-        "Omega-3 yağları oynaqlardakı iltihabı azaldır və bərpanı sürətləndirir.",
-        "Məşqdən əvvəl şəkərsiz qara qəhvə diqqəti və gücü artırır.",
+        "Məşqdən dərhal sonra protein və sürətli karbohidrat qəbulu əzələləri bərpa edir.",
+        "Qida mühəndisi baxışı: Su norması (Çəki x 0.033) metabolik sürət üçün şərtdir.",
+        "Kazein proteini (kəsmik) yuxu zamanı əzələ katabolizminin qarşısını alır.",
+        "Omeqa-3 yağları oynaqlardakı iltihabı azaldır və bərpanı sürətləndirir.",
         "Gündəlik 7-8 saat keyfiyyətli yuxu əzələ artımı üçün ən vacib amildir."
     ];
 
-    function showTip() {
-        const rand = tips[Math.floor(Math.random() * tips.length)];
-        document.getElementById('daily-tip').innerText = rand;
-    }
-    showTip();
+    function showTip() { const rand = tips[Math.floor(Math.random() * tips.length)]; document.getElementById('daily-tip').innerText = rand; } showTip();
 
-    function predict() {
-        let a = parseFloat(document.getElementById('arm').value);
-        if(a) document.getElementById('p-res').innerHTML = `Nazir ilə 3 aya hədəf: <b style="color:var(--gold)">${(a+3.5).toFixed(1)} sm</b>`;
-    }
+    // 1 & 2. Gələcək Təxmini & İnkişaf
+    function predict() { let a = parseFloat(document.getElementById('cur-arm').value); if(a) document.getElementById('p-res').innerHTML = `3 aya hədəf: <b style="color:var(--gold)">${(a+3.5).toFixed(1)} sm</b> (+3.5)`; }
 
-    function scan() {
-        const d = { 
-            'sinə': '<b>Bench Press:</b> Barı yavaş endir, tam partlayışla qaldır.', 
-            'ayaq': '<b>Squat:</b> Beli düz tut, tam fokuslanaraq aşağı otur.', 
-            'qol': '<b>Bicep Curl:</b> Yuxarıda mütləq 1 saniyə sıxılmanı hiss et.', 
-            'kürək': '<b>Deadlift:</b> Formanı qoru, ağırlığı hiss et.' 
-        };
-        document.getElementById('m-res').innerHTML = d[document.getElementById('ms').value];
-    }
+    // 4. Əzələ Skaneri Metodu
+    function scan() { const d = { 'sinə': 'Bench Press: Barı yavaş endir, tam partlayışla qaldır.', 'ayaq': 'Squat: Beli düz tut, tam fokuslanaraq aşağı otur.', 'qol': 'Bicep Curl: Yuxarıda mütləq 1 saniyə sıxılmanı hiss et.', 'kürək': 'Deadlift: Formanı qoru, ağırlığı hiss et.' }; document.getElementById('m-res').innerHTML = d[document.getElementById('m-select').value]; }
 
-    function calcP() {
-        let w = document.getElementById('weight').value;
-        if(w) document.getElementById('pr-res').innerHTML = `Gündəlik: <b style="color:var(--gold)">${w*2}q Protein</b> (Düzgün bərpa üçün).`;
-    }
+    // 5. Bədən Tipi (Soma Testi)
+    function checkBody() { let q = document.getElementById('q1').value; document.getElementById('body-res').innerText = q == "1" ? "EKTOMORF: Kütlə artımı proqramı lazımdır." : "MEZOMORF/ENDOMORF: Güc proqramı idealdır."; }
 
-    let tl = 60, ti;
-    function startT() {
-        clearInterval(ti); tl = 60;
-        ti = setInterval(() => {
-            tl--;
-            document.getElementById('time').innerText = `00:${tl < 10 ? '0'+tl : tl}`;
-            if(tl <= 0) { clearInterval(ti); alert("Fasilə bitdi! Məşqə qayıdın! 🔥"); }
-        }, 1000);
-    }
+    // 6. Enerji Barı (Dinamik Səsli)
+    function updateEnergy() { let s = parseInt(document.getElementById('sleep').value), f = parseInt(document.getElementById('food').value); let total = (s+f)/2; document.getElementById('e-val').innerText = total + "%"; if(total > 80) { let speech = new SpeechSynthesisUtterance("Energy high! Let's go Nazir!"); window.speechSynthesis.speak(speech); } }
+
+    // 11. Beast Mode (Night Mode - Səsli)
+    function beastActivation() { document.body.style.backgroundColor = "black"; document.body.style.boxShadow = "inset 0 0 100px red"; let speech = new SpeechSynthesisUtterance("Beast mode activated. Let's show them Nazir!"); window.speechSynthesis.speak(speech); setTimeout(() => { document.body.style.boxShadow = "none"; }, 3000); }
+
+    // Teymer
+    let tl = 60, ti; function startT() { clearInterval(ti); tl = 60; ti = setInterval(() => { tl--; document.getElementById('time').innerText = `00:${tl < 10 ? '0'+tl : tl}`; if(tl <= 0) { clearInterval(ti); alert("Fasilə bitdi! Setə başla! 🔥"); } }, 1000); }
+
+    // WHATSAPP İNTEQRASİYASI
+    function sendWS(type) { let phone = "994702946819"; let msg = `Salam Nazir bəy, saytdan gəlirəm. Məşqlərə başlamaq istəyirəm!`; window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank'); }
 </script>
 
 <footer>
-    NB FITNESS ACADEMY | OFFICIAL SYSTEM v16.1 | NAZİR & ARİF © 2026
+    NB FITNESS ACADEMY | OFFICIAL SYSTEM v17.0 | NAZİR & ARİF © 2026
 </footer>
 
 </body>
