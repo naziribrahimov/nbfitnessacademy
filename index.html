@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS | PROFESSIONAL ACADEMY v18.0</title>
+    <title>NB FITNESS | SMART CONNECT v21.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0d0d0d; }
@@ -19,7 +19,7 @@
         .coach-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
         
         .nazir-img { object-position: center top; }
-        .arif-img { object-position: center 15% !important; } /* Arifi daha da yuxarı qaldırdım */
+        .arif-img { object-position: center 15% !important; } 
 
         .info-overlay { 
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 60px 40px; 
@@ -28,11 +28,12 @@
         .role { font-family: 'Orbitron'; font-size: 14px; letter-spacing: 5px; font-weight: bold; margin-bottom: 5px; }
         .name { font-family: 'Orbitron'; font-size: clamp(35px, 5vw, 50px); font-weight: 900; margin: 10px 0; text-transform: uppercase; line-height: 1; }
         
+        /* WHATSAPP HAZIR MESAJLI DÜYMƏLƏR */
         .ws-link { 
             display: inline-flex; align-items: center; gap: 12px; padding: 16px 40px; 
             text-decoration: none; font-family: 'Orbitron'; font-weight: bold; 
             border-radius: 4px; font-size: 12px; transition: 0.4s; margin-top: 20px;
-            text-transform: uppercase;
+            text-transform: uppercase; cursor: pointer; border: none;
         }
         .n-btn { background: var(--red); color: white; box-shadow: 0 5px 25px rgba(255, 0, 60, 0.4); }
         .a-btn { background: var(--blue); color: black; box-shadow: 0 5px 25px rgba(0, 247, 255, 0.4); }
@@ -43,18 +44,14 @@
         .tool-card:hover { border-color: var(--red); }
         h3 { font-family: 'Orbitron'; font-size: 15px; color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 15px; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        input, select, textarea { width: 100%; padding: 15px; margin: 10px 0; background: #000; border: 1px solid #333; color: white; border-radius: 5px; font-family: 'Orbitron'; box-sizing: border-box; font-size: 14px; outline: none; }
+        input, select { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #333; color: white; border-radius: 5px; font-family: 'Orbitron'; box-sizing: border-box; font-size: 14px; outline: none; }
         .btn-act { width: 100%; padding: 16px; border: none; border-radius: 5px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; background: #1a1a1a; color: white; transition: 0.3s; margin-top: 10px; font-size: 12px; text-transform: uppercase; }
         .btn-act:hover { background: var(--red); }
 
-        .res-box { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.7); border-radius: 8px; border-left: 4px solid var(--blue); font-size: 14px; color: #eee; }
+        .res-box { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.7); border-radius: 8px; border-left: 4px solid var(--blue); font-size: 14px; color: #eee; line-height: 1.7; }
 
-        /* YENİ: NAİLLİYYƏT ZƏNCİRİ */
-        .timeline { margin-top: 10px; }
-        .timeline-item { border-left: 2px solid var(--gold); padding-left: 20px; margin-bottom: 15px; position: relative; }
+        .timeline-item { border-left: 2px solid var(--gold); padding-left: 20px; margin-bottom: 15px; position: relative; font-size: 14px; }
         .timeline-item::before { content: ""; width: 10px; height: 10px; background: var(--gold); position: absolute; left: -6px; top: 5px; border-radius: 50%; }
-
-        .timer-val { font-size: 50px; font-family: 'Orbitron'; color: var(--red); text-align: center; margin: 15px 0; }
 
         footer { text-align: center; padding: 100px 20px; color: #222; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 4px; border-top: 1px solid #111; }
     </style>
@@ -71,7 +68,7 @@
         <div class="info-overlay">
             <div class="role" style="color: var(--red);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">NAZİR İBRAHİMOV</h2>
-            <a href="https://wa.me/994702946819" class="ws-link n-btn" target="_blank">📲 NAZİRƏ YAZ (294-68-19)</a>
+            <button onclick="contactWS('Nazir', '994702946819')" class="ws-link n-btn">📲 NAZİRƏ YAZ (294-68-19)</button>
         </div>
     </div>
     <div class="coach-card">
@@ -79,7 +76,7 @@
         <div class="info-overlay">
             <div class="role" style="color: var(--blue);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">ARİF BAĞIROV</h2>
-            <a href="https://wa.me/994514102531" class="ws-link a-btn" target="_blank">📲 ARİFƏ YAZ (410-25-31)</a>
+            <button onclick="contactWS('Arif', '994514102531')" class="ws-link a-btn">📲 ARİFƏ YAZ (410-25-31)</button>
         </div>
     </div>
 </div>
@@ -94,6 +91,17 @@
     <div class="dashboard">
         
         <div class="tool-card">
+            <h3>📊 ELITE BODY ANALYZER</h3>
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="age" placeholder="Yaş">
+                <input type="number" id="height" placeholder="Boy (sm)">
+            </div>
+            <input type="number" id="weight-input" placeholder="Çəki (kq)">
+            <button onclick="fullAnalyze()" class="btn-act" style="background:var(--blue); color:black;">BƏDƏN PASPORTUNU AÇ</button>
+            <div id="anal-res" class="res-box">Bütün analizlər bura çıxacaq...</div>
+        </div>
+
+        <div class="tool-card">
             <h3>📝 MƏŞQƏ QEYDİYYAT</h3>
             <input type="text" id="user-name" placeholder="Adınız">
             <select id="user-goal">
@@ -102,45 +110,38 @@
                 <option value="Güç">Güc / Powerlifting</option>
             </select>
             <button onclick="sendRegWS()" class="btn-act" style="background:var(--gold); color:black;">MƏLUMATI GÖNDƏR</button>
-            <p style="font-size: 10px; color: #444; margin-top: 10px; text-align: center;">Məlumat birbaşa Nazir bəyə gedir.</p>
         </div>
 
         <div class="tool-card">
-            <h3>📊 90 GÜNLÜK YOL XƏRİTƏSİ</h3>
+            <h3>📈 İNKİŞAF TƏXMİNİ</h3>
+            <input type="number" id="arm-val" placeholder="Cari qol (sm)">
+            <button onclick="predict()" class="btn-act" style="background:var(--red); color:white;">90 GÜN SONRANI GÖR</button>
+            <div id="p-res" class="res-box"></div>
+        </div>
+
+        <div class="tool-card">
+            <h3>🗺️ NAİLLİYYƏT ZƏNCİRİ</h3>
             <div class="timeline">
-                <div class="timeline-item"><b>1. Həftə:</b> Metabolik adaptasiya.</div>
-                <div class="timeline-item"><b>4. Həftə:</b> Güc artımı və vizual incəlmə.</div>
+                <div class="timeline-item"><b>1. Həftə:</b> Maddələr mübadiləsi adaptasiyası.</div>
+                <div class="timeline-item"><b>4. Həftə:</b> Güc artımı və vizual fərq.</div>
                 <div class="timeline-item"><b>12. Həftə:</b> Tam bədən transformasiyası.</div>
             </div>
         </div>
 
         <div class="tool-card">
-            <h3>📈 İNKİŞAF TƏXMİNİ</h3>
-            <input type="number" id="arm" placeholder="Cari qol (sm)">
-            <button onclick="predict()" class="btn-act" style="background:var(--blue); color:black;">TƏXMİNİ GÖR</button>
-            <div id="p-res" class="res-box"></div>
-        </div>
-
-        <div class="tool-card">
             <h3>🔍 ƏZƏLƏ METODİKASI</h3>
-            <select id="ms">
+            <select id="ms-select">
                 <option value="sinə">SİNƏ</option>
                 <option value="ayaq">AYAQ</option>
                 <option value="qol">QOL</option>
             </select>
-            <button onclick="scan()" class="btn-act">SKAN ET</button>
+            <button onclick="scanM()" class="btn-act">SKAN ET</button>
             <div id="m-res" class="res-box"></div>
         </div>
 
         <div class="tool-card">
-            <h3>📱 FASİLƏ TEYMERİ</h3>
-            <div class="timer-val" id="time">01:00</div>
-            <button onclick="startT()" class="btn-act" style="background:var(--red); color:white;">BAŞLAT (60s)</button>
-        </div>
-
-        <div class="tool-card">
             <h3>🍗 PROTEİN REHBERİ</h3>
-            <input type="number" id="weight" placeholder="Çəkiniz (kq)">
+            <input type="number" id="p-weight" placeholder="Çəkiniz (kq)">
             <button onclick="calcP()" class="btn-act">HESABLA</button>
             <div id="pr-res" class="res-box"></div>
         </div>
@@ -152,35 +153,48 @@
     const tips = [
         "Məşqdən dərhal sonra protein və sürətli karbohidrat bərpanı sürətləndirir.",
         "Su normanı mütləq tamamla (Çəki x 0.033).",
-        "Bu gün fokus: Hərəkətləri tam amplitudada və yavaş icra et.",
-        "Yuxu rejiminə diqqət et, bərpa olmayan əzələ inkişaf etməz.",
-        "Əzələ ağrısı varsa, yüngül kardio və dartınma hərəkətləri et."
+        "Hər gün ən azı 7-8 saat keyfiyyətli yuxu əzələ artımı üçün şərtdir.",
+        "Mühəndis məsləhəti: Qidanda lifli tərəvəzləri artır, həzmi asanlaşdırır."
     ];
     document.getElementById('daily-tip').innerText = tips[Math.floor(Math.random() * tips.length)];
 
-    function predict() {
-        let a = parseFloat(document.getElementById('arm').value);
-        if(a) document.getElementById('p-res').innerHTML = `Nazir bəylə 90 günə hədəf: <b>${(a+3.5).toFixed(1)} sm</b>`;
+    // 🏆 Hazır Mesaj Funksiyası
+    function contactWS(coachName, phone) {
+        let msg = `Salam ${coachName} bəy, mən saytdan gəlirəm. Sizin rəhbərliyiniz altında məşqlərə başlamaq istəyirəm!`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    function scan() {
-        const d = { 'sinə': 'Bench Press: Barı yavaş endir, partlayışla qaldır.', 'ayaq': 'Squat: Beli düz tut, tam otur.', 'qol': 'Curl: Yuxarıda mütləq sıxılmanı hiss et.' };
-        document.getElementById('m-res').innerHTML = d[document.getElementById('ms').value];
+    function fullAnalyze() {
+        let age = parseInt(document.getElementById('age').value);
+        let h = document.getElementById('height').value / 100;
+        let w = document.getElementById('weight-input').value;
+        let res = document.getElementById('anal-res');
+
+        if(age && h && w) {
+            let bmi = (w / (h * h)).toFixed(1);
+            let ideal = (22.5 * h * h).toFixed(0);
+            let mAge = age;
+            if(bmi > 25) mAge = age + Math.floor((bmi - 25) * 0.8);
+            else if(bmi < 22) mAge = age - 2;
+            let status = (bmi < 18.5) ? "Zəif" : (bmi < 25) ? "Atletik" : (bmi < 30) ? "Overweight" : "Obese";
+
+            res.innerHTML = `📌 <b>Bədən Statusu:</b> ${status}<br>⚖️ <b>BMI İndeksi:</b> ${bmi}<br>📉 <b>İdeal Çəkin:</b> ${ideal} kq<br>⏳ <b>Metabolik Yaşın:</b> ${mAge} yaş`;
+        } else { alert("Zəhmət olmasa bütün xanaları doldurun."); }
+    }
+
+    function predict() {
+        let a = parseFloat(document.getElementById('arm-val').value);
+        if(a) document.getElementById('p-res').innerHTML = `90 günə hədəf: <b style="color:var(--gold)">${(a+3.5).toFixed(1)} sm</b>`;
+    }
+
+    function scanM() {
+        const d = { 'sinə': 'Bench Press: Barı yavaş endir, partlayışla qaldır.', 'ayaq': 'Squat: Beli düz tut, tam fokuslanaraq aşağı otur.', 'qol': 'Bicep Curl: Yuxarıda mütləq 1 saniyə sıxılmanı hiss et.' };
+        document.getElementById('m-res').innerHTML = d[document.getElementById('ms-select').value];
     }
 
     function calcP() {
-        let w = document.getElementById('weight').value;
+        let w = document.getElementById('p-weight').value;
         if(w) document.getElementById('pr-res').innerHTML = `Gündəlik: <b>${w*2}q Protein</b> (Düzgün bərpa üçün).`;
-    }
-
-    let tl = 60, ti;
-    function startT() {
-        clearInterval(ti); tl = 60;
-        ti = setInterval(() => {
-            tl--;
-            document.getElementById('time').innerText = `00:${tl < 10 ? '0'+tl : tl}`;
-            if(tl <= 0) { clearInterval(ti); alert("Fasilə bitti!"); }
-        }, 1000);
     }
 
     function sendRegWS() {
@@ -194,7 +208,7 @@
 </script>
 
 <footer>
-    NB FITNESS ACADEMY | OFFICIAL SYSTEM v18.0 | NAZİR & ARİF © 2026
+    NB FITNESS ACADEMY | OFFICIAL SYSTEM v21.0 | NAZİR & ARİF © 2026
 </footer>
 
 </body>
