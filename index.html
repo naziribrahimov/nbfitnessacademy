@@ -3,206 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS ACADEMY | Nazir & Arif</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>NB FITNESS ACADEMY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --main-red: #cc0000; --dark-bg: #0a0a0a; --card-bg: #141414; --text-gray: #aaaaaa; }
+        :root { --red: #bc0000; --blue: #007bff; --dark: #000000; --gray: #111111; }
         
-        body { background: var(--dark-bg); color: white; font-family: 'Roboto', sans-serif; margin: 0; padding: 0; }
-        h1, h2, h3, .btn { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; margin: 0; }
 
-        /* HEADER SECTION */
-        header { 
-            height: 80vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200');
-            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-bottom: 5px solid var(--main-red);
-        }
-        header h1 { font-size: 60px; margin: 0; line-height: 1; }
-        header h1 span { color: var(--main-red); }
-        header p { font-size: 20px; color: var(--text-gray); margin-top: 15px; }
+        /* HEADER */
+        header { padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--red); background: #000; }
+        header h1 { font-size: 40px; letter-spacing: 3px; }
+        header h1 span { color: var(--red); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-        /* MƏŞQÇİ KARTLARI (BÖYÜK VƏ GÖSTƏRİŞLİ) */
-        .coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .coach-card { position: relative; height: 600px; border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.4s; }
-        .coach-card:hover { border-color: var(--main-red); transform: translateY(-10px); }
-        .coach-img { width: 100%; height: 100%; object-fit: cover; }
-        .coach-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(transparent, black 80%); box-sizing: border-box; }
-        .coach-overlay h2 { font-size: 35px; margin: 0; }
-        .coach-overlay p { color: var(--main-red); font-weight: bold; margin: 5px 0 20px; letter-spacing: 2px; }
+        /* MƏŞQÇİLƏR - TAM BƏDƏN GÖRÜNÜŞÜ */
+        .coach-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 60px; }
+        .coach-card { background: var(--gray); border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.3s; text-align: center; }
+        .coach-card:hover { border-color: var(--red); transform: translateY(-5px); }
         
-        .btn-call { display: inline-block; padding: 12px 30px; background: var(--main-red); color: white; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
-        .btn-call:hover { background: white; color: black; }
+        /* Şəkil konteyneri - Bədənin tam görünməsi üçün */
+        .img-container { width: 100%; height: 750px; overflow: hidden; background: #0a0a0a; }
+        .coach-img { width: 100%; height: 100%; object-fit: contain; background-position: top; }
+        
+        .coach-info { padding: 30px; }
+        .coach-info h2 { font-size: 30px; margin-bottom: 5px; }
+        .coach-info p { color: #888; text-transform: uppercase; font-size: 14px; letter-spacing: 2px; margin-bottom: 20px; }
 
-        /* DASHBOARD GRID (FUNKSİYALAR) */
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border-radius: 12px; padding: 30px; border: 1px solid #222; }
-        .card h3 { font-size: 22px; color: var(--main-red); margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
-
-        input, select { width: 100%; padding: 12px; margin-bottom: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        .btn-tool { width: 100%; padding: 14px; background: #222; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-tool:hover { background: var(--main-red); }
-
-        .res-box { margin-top: 15px; padding: 15px; background: #000; border-left: 4px solid var(--main-red); min-height: 40px; color: var(--text-gray); font-size: 15px; line-height: 1.5; }
-
-        /* TEYMER */
-        .timer-display { font-size: 50px; font-weight: bold; text-align: center; color: white; margin: 10px 0; font-family: 'Oswald'; }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; transition: 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        footer { text-align: center; padding: 60px; background: #000; color: #444; border-top: 1px solid #111; font-size: 12px; }
-
-        @media (max-width: 600px) {
-            header h1 { font-size: 40px; }
-            .coach-card { height: 450px; }
-            .coach-grid { grid-template-columns: 1fr; }
+        /* WHATSAPP DÜYMƏLƏRİ */
+        .btn-ws { 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold;
+            color: white; transition: 0.3s; font-size: 14px; text-transform: uppercase;
         }
+        .ws-nazir { background: #25d366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); }
+        .ws-arif { background: #128c7e; box-shadow: 0 4px 15px rgba(18, 140, 126, 0.2); }
+        .btn-ws:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* DASHBOARD - SADƏ VƏ SƏLİQƏLİ */
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .tool-card { background: var(--gray); padding: 25px; border-radius: 12px; border: 1px solid #222; }
+        .tool-card h3 { color: var(--red); font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        input, select { 
+            width: 100%; padding: 12px; margin-bottom: 15px; background: #000; 
+            border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; 
+        }
+        .btn-action { 
+            width: 100%; padding: 12px; background: #222; color: white; border: none; 
+            border-radius: 5px; cursor: pointer; font-family: 'Oswald'; font-weight: bold; 
+        }
+        .btn-action:hover { background: var(--red); }
+
+        .res-box { margin-top: 15px; padding: 15px; background: #050505; border-radius: 5px; font-size: 14px; color: #ccc; min-height: 20px; }
+
+        .timer-val { font-size: 40px; font-weight: bold; text-align: center; color: var(--red); margin: 10px 0; font-family: 'Oswald'; }
+
+        footer { text-align: center; padding: 50px; color: #333; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+
+        @media (max-width: 768px) { .img-container { height: 500px; } }
     </style>
 </head>
 <body>
 
-<a href="https://wa.me/994702946819" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
-</a>
-
 <header>
     <h1>NB <span>FITNESS</span> ACADEMY</h1>
-    <p>Peşəkar Məşq, Real Nəticə</p>
 </header>
 
 <div class="container">
     
-    <div class="coach-grid">
+    <div class="coach-section">
         <div class="coach-card">
-            <img src="nazir.jpg" class="coach-img" alt="Nazir İbrahimov">
-            <div class="coach-overlay">
+            <div class="img-container">
+                <img src="nazir.jpg" class="coach-img" alt="Nazir İbrahimov">
+            </div>
+            <div class="coach-info">
                 <h2>NAZİR İBRAHİMOV</h2>
-                <p>GÜC VƏ KÜTLƏ MÜTƏXƏSSİSİ</p>
-                <a href="tel:0702946819" class="btn-call">ZƏNG ET: 070 294 68 19</a>
+                <p>Güc və Kondisiya Məşqçisi</p>
+                <a href="https://wa.me/994702946819?text=Salam%20Nazir%20bəy,%20məşqlərə%20başlamaq%20istəyirəm." class="btn-ws ws-nazir" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20"> Nazirə Yaz
+                </a>
             </div>
         </div>
+
         <div class="coach-card">
-            <img src="arif.jpg" class="coach-img" alt="Arif Bağırov">
-            <div class="coach-overlay">
+            <div class="img-container">
+                <img src="arif.jpg" class="coach-img" alt="Arif Bağırov">
+            </div>
+            <div class="coach-info">
                 <h2>ARİF BAĞIROV</h2>
-                <p>ESTETİKA VƏ BODYBUILDING</p>
-                <a href="tel:0514102531" class="btn-call">ZƏNG ET: 051 410 25 31</a>
+                <p>Bodybuilding və Estetika</p>
+                <a href="https://wa.me/994514102531?text=Salam%20Arif%20bəy,%20məşqlərə%20başlamaq%20istəyirəm." class="btn-ws ws-arif" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20"> Arifə Yaz
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="dashboard-grid">
-        
-        <div class="card">
-            <h3>📈 3 AYLIQ İNKİŞAF PLANI</h3>
-            <p style="font-size: 14px; color: var(--text-gray);">Mövcud qol ölçünüzü yazın:</p>
-            <input type="number" id="armSize" placeholder="Qol ölçüsü (sm)">
-            <button onclick="predictProgress()" class="btn-tool">HESABLA</button>
-            <div id="predictRes" class="res-box">Nəticə bura çıxacaq...</div>
+    <div class="dashboard">
+        <div class="tool-card">
+            <h3>📈 3 AYLIQ TƏXMİN</h3>
+            <input type="number" id="arm" placeholder="Cari qol ölçüsü (sm)">
+            <button onclick="predict()" class="btn-action">HESABLA</button>
+            <div id="p-res" class="res-box"></div>
         </div>
 
-        <div class="card">
-            <h3>🍗 PROTEİN EHTİYACI</h3>
+        <div class="tool-card">
+            <h3>🍗 PROTEİN REHBERİ</h3>
             <input type="number" id="weight" placeholder="Çəkiniz (kq)">
-            <button onclick="calcProtein()" class="btn-tool">HESABLA</button>
-            <div id="proteinRes" class="res-box">Gündəlik protein miqdarı...</div>
+            <button onclick="calcP()" class="btn-action">HESABLA</button>
+            <div id="pr-res" class="res-box"></div>
         </div>
 
-        <div class="card">
-            <h3>📱 MƏŞQ TEYMERİ (FASİLƏ)</h3>
-            <div class="timer-display" id="timer">01:00</div>
-            <button onclick="startTimer()" class="btn-tool" style="background: var(--main-red);">BAŞLAT (60 SAN)</button>
+        <div class="tool-card">
+            <h3>📱 FASİLƏ TEYMERİ</h3>
+            <div class="timer-val" id="clock">01:00</div>
+            <button onclick="startT()" class="btn-action">BAŞLAT (60 SAN)</button>
         </div>
 
-        <div class="card">
-            <h3>🧬 GENETİK TİP TESTİ</h3>
+        <div class="tool-card">
+            <h3>🧬 GENETİK TEST</h3>
             <select id="bone">
                 <option value="1">Nazik biləklər</option>
-                <option value="2">Normal/Güclü biləklər</option>
-                <option value="3">Qalın biləklər</option>
+                <option value="2">Normal biləklər</option>
+                <option value="3">Geniş biləklər</option>
             </select>
-            <button onclick="checkBody()" class="btn-tool">ANALİZ ET</button>
-            <div id="bodyRes" class="res-box">Bədən tipiniz...</div>
+            <button onclick="checkB()" class="btn-action">ANALİZ ET</button>
+            <div id="b-res" class="res-box"></div>
         </div>
-
-        <div class="card">
-            <h3>⚡ ENERJİ SƏVİYYƏSİ</h3>
-            <select id="sleep">
-                <option value="40">Yuxu: 5-6 saat</option>
-                <option value="100">Yuxu: 8+ saat</option>
-            </select>
-            <button onclick="checkEnergy()" class="btn-tool">YOXLA</button>
-            <div id="energyRes" class="res-box">Məşqə hazırsınız?</div>
-        </div>
-
-        <div class="card">
-            <h3>🔍 ƏZƏLƏ SKANERİ</h3>
-            <select id="muscle">
-                <option value="sinə">Sinə</option>
-                <option value="ayaq">Ayaq</option>
-                <option value="qol">Qol</option>
-                <option value="kürək">Kürək</option>
-            </select>
-            <button onclick="scanMuscle()" class="btn-tool">SKAN ET</button>
-            <div id="muscleRes" class="res-box">Məşqçi məsləhəti...</div>
-        </div>
-
-    </div>
-
-    <div style="text-align: center; margin-top: 80px;">
-        <h2 style="font-size: 30px;">MƏŞQLƏRƏ BAŞLAMAQ İSTƏYİRSƏN?</h2>
-        <p style="color: var(--text-gray); margin-bottom: 30px;">Bizimlə birbaşa əlaqə saxla və proqramını al.</p>
-        <button onclick="sendWhatsApp()" class="btn-tool" style="width: auto; padding: 20px 60px; background: #25d366; font-size: 20px;">🚀 WHATSAPP İLƏ YAZ</button>
     </div>
 
 </div>
 
 <script>
-    function predictProgress() {
-        let a = parseFloat(document.getElementById('armSize').value);
-        if(a) document.getElementById('predictRes').innerHTML = `Nazir bəylə 3 ayda hədəf: <b>${(a+3.5).toFixed(1)} sm</b> (+3.5 sm artım)`;
+    function predict() {
+        let a = parseFloat(document.getElementById('arm').value);
+        if(a) document.getElementById('p-res').innerHTML = `Nazir ilə 3 aya hədəf: <b>${(a+3.5).toFixed(1)} sm</b>`;
     }
 
-    function calcProtein() {
+    function calcP() {
         let w = document.getElementById('weight').value;
-        if(w) document.getElementById('proteinRes').innerHTML = `Gündəlik: <b>${w*2}q Protein</b><br>Təxminən 600q toyuq filesi.`;
+        if(w) document.getElementById('pr-res').innerHTML = `Gündəlik: <b>${w*2}q Protein</b>`;
     }
 
-    let timeLeft = 60, timerId;
-    function startTimer() {
-        clearInterval(timerId); timeLeft = 60;
-        timerId = setInterval(() => {
-            timeLeft--;
-            document.getElementById('timer').innerText = `00:${timeLeft < 10 ? '0'+timeLeft : timeLeft}`;
-            if(timeLeft <= 0) { clearInterval(timerId); alert("Fasilə bitdi! Setə başla!"); }
+    let tl = 60, tid;
+    function startT() {
+        clearInterval(tid); tl = 60;
+        tid = setInterval(() => {
+            tl--;
+            document.getElementById('clock').innerText = `00:${tl < 10 ? '0'+tl : tl}`;
+            if(tl <= 0) { clearInterval(tid); alert("Vaxt bitdi!"); }
         }, 1000);
     }
 
-    function checkBody() {
+    function checkB() {
         let b = document.getElementById('bone').value;
-        document.getElementById('bodyRes').innerText = b == "1" ? "EKTOMORF: Kütlə artımı proqramı lazımdır." : "MEZOMORF/ENDOMORF: Güc proqramı idealdır.";
-    }
-
-    function checkEnergy() {
-        let s = document.getElementById('sleep').value;
-        document.getElementById('energyRes').innerText = s == "100" ? "Enerji 100%! Bu gün rekord qırmağın vaxtıdır!" : "Enerji orta. Diqqətli olun.";
-    }
-
-    function scanMuscle() {
-        const d = { 'sinə': 'Bench Press: Barı partlayışla qaldırın.', 'ayaq': 'Squat: Tam aşağı oturun.', 'qol': 'Curl: Yuxarıda mütləq sıxın.', 'kürək': 'Deadlift: Beli düz saxlayın.' };
-        document.getElementById('muscleRes').innerHTML = d[document.getElementById('muscle').value];
-    }
-
-    function sendWhatsApp() {
-        let msg = "Salam Nazir bəy, saytınızdan gəlirəm. Məşqlərə başlamaq istəyirəm!";
-        window.open(`https://wa.me/994702946819?text=${encodeURIComponent(msg)}`, '_blank');
+        document.getElementById('b-res').innerText = b == "1" ? "Ektomorf (Kütlə lazımdır)" : "Mezomorf / Endomorf";
     }
 </script>
 
 <footer>
-    NB FITNESS ACADEMY | BÜTÜN HÜQUQLAR QORUNUR © 2026
+    NB FITNESS ACADEMY | BAKU 2026 | ALL RIGHTS RESERVED
 </footer>
 
 </body>
