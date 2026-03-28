@@ -3,234 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS | GALAXY COMMAND CENTER v8.0</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>NB FITNESS ACADEMY | Nazir & Arif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --red: #ff003c; --cyan: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0a0a0a; }
-        body { margin: 0; background: var(--dark); color: white; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; scroll-behavior: smooth; transition: 0.5s; }
+        :root { --main-red: #cc0000; --dark-bg: #0a0a0a; --card-bg: #141414; --text-gray: #aaaaaa; }
         
-        /* 1. CANLI KOSMİK ARXA FON (NEBULA BG) */
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -2; width: 100%; height: 100%; }
+        body { background: var(--dark-bg); color: white; font-family: 'Roboto', sans-serif; margin: 0; padding: 0; }
+        h1, h2, h3, .btn { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* HEADER SECTION */
+        header { 
+            height: 80vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200');
+            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-bottom: 5px solid var(--main-red);
+        }
+        header h1 { font-size: 60px; margin: 0; line-height: 1; }
+        header h1 span { color: var(--main-red); }
+        header p { font-size: 20px; color: var(--text-gray); margin-top: 15px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+        /* MƏŞQÇİ KARTLARI (BÖYÜK VƏ GÖSTƏRİŞLİ) */
+        .coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .coach-card { position: relative; height: 600px; border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.4s; }
+        .coach-card:hover { border-color: var(--main-red); transform: translateY(-10px); }
+        .coach-img { width: 100%; height: 100%; object-fit: cover; }
+        .coach-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(transparent, black 80%); box-sizing: border-box; }
+        .coach-overlay h2 { font-size: 35px; margin: 0; }
+        .coach-overlay p { color: var(--main-red); font-weight: bold; margin: 5px 0 20px; letter-spacing: 2px; }
         
-        /* HEADER VƏ GOSTERİŞLİ MƏŞQÇİLƏR */
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 7vw; margin: 0; letter-spacing: 15px; color: transparent; -webkit-text-stroke: 1px white; transition: 0.5s; }
-        h1:hover { color: white; text-shadow: 0 0 30px var(--red); -webkit-text-stroke: 0; }
-        .hero-text { font-size: clamp(14px, 2vw, 20px); color: var(--cyan); letter-spacing: 5px; text-transform: uppercase; margin-top: 10px; }
+        .btn-call { display: inline-block; padding: 12px 30px; background: var(--main-red); color: white; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
+        .btn-call:hover { background: white; color: black; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 100px 20px; }
-        .section-title { font-family: 'Syncopate'; text-align: center; color: var(--red); font-size: 30px; margin: 80px 0 40px; }
+        /* DASHBOARD GRID (FUNKSİYALAR) */
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 30px; border: 1px solid #222; }
+        .card h3 { font-size: 22px; color: var(--main-red); margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
 
-        /* MOZAİKA GRID - BÜTÜN FUNKSİYALAR */
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        
-        .card { background: rgba(10, 10, 10, 0.8); border: 1px solid #222; border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); transition: 0.4s; position: relative; overflow: hidden; }
-        .card:hover { border-color: var(--red); box-shadow: 0 0 50px rgba(255, 0, 60, 0.2); transform: translateY(-5px); }
-        .card h3 { font-family: 'Syncopate'; font-size: 16px; color: white; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+        .btn-tool { width: 100%; padding: 14px; background: #222; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-tool:hover { background: var(--main-red); }
 
-        /* Form Elementləri */
-        input, select { background: transparent; border: none; border-bottom: 2px solid #333; color: white; font-size: 25px; width: 100%; text-align: center; margin: 20px 0; outline: none; font-family: 'Syncopate'; }
-        input:focus { border-bottom-color: var(--cyan); }
+        .res-box { margin-top: 15px; padding: 15px; background: #000; border-left: 4px solid var(--main-red); min-height: 40px; color: var(--text-gray); font-size: 15px; line-height: 1.5; }
 
-        .btn-galaxy { padding: 15px 40px; border: 1px solid white; background: transparent; color: white; font-family: 'Syncopate'; font-size: 12px; cursor: pointer; transition: 0.3s; margin-top: 15px; width: 100%; }
-        .btn-galaxy:hover { background: white; color: black; box-shadow: 0 0 30px white; }
-
-        .res-box { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px; font-size: 16px; min-height: 50px; color: #ccc; border-left: 3px solid var(--red); }
-
-        /* Teymer */
-        .timer-val { font-size: 60px; font-family: 'Syncopate'; color: var(--red); text-shadow: 0 0 15px var(--red); text-align: center; margin: 15px 0; }
-
-        /* Liderlər Lövhəsi */
-        .leader-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
-
-        /* Transform Slayderi */
-        .transform-slider { width: 100%; height: 300px; position: relative; border-radius: 10px; overflow: hidden; margin-top: 20px; }
-        .t-img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
-        .t-before { filter: grayscale(100%); }
-        .t-after { clip-path: inset(0 0 0 100%); transition: clip-path 0.5s; }
-        .transform-slider:hover .t-after { clip-path: inset(0 0 0 0); }
-
-        /* Enerji Bar (Top Right) */
-        #energy-hud { position: fixed; top: 20px; right: 20px; z-index: 1000; font-family: 'Syncopate'; color: var(--cyan); text-shadow: 0 0 10px var(--cyan); border: 1px solid var(--cyan); padding: 8px 15px; border-radius: 50px; font-size: 10px; }
-
-        /* Məşqçi Kartları */
-        .coach-card { background: rgba(10, 10, 10, 0.8); border-radius: 20px; overflow: hidden; border: 1px solid #222; height: 600px; position: relative; transition: 0.5s; }
-        .coach-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .coach-card:hover .coach-img { filter: grayscale(0%); transform: scale(1.05); }
-        .coach-info { position: absolute; bottom: 0; padding: 40px; background: linear-gradient(transparent, black); width: 100%; }
+        /* TEYMER */
+        .timer-display { font-size: 50px; font-weight: bold; text-align: center; color: white; margin: 10px 0; font-family: 'Oswald'; }
 
         /* WHATSAPP FLOAT */
-        .ws-link { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 0 25px #25d366; cursor: pointer; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        @media (max-width: 768px) { .dashboard-grid { grid-template-columns: 1fr; } .coach-grid { grid-template-columns: 1fr; } }
+        footer { text-align: center; padding: 60px; background: #000; color: #444; border-top: 1px solid #111; font-size: 12px; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 40px; }
+            .coach-card { height: 450px; }
+            .coach-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<div id="energy-hud">POWER: <span id="e-val">0%</span></div>
+<a href="https://wa.me/994702946819" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+</a>
 
 <header>
-    <div class="hero-text">v8.0 Galaxy Commander</div>
-    <h1>NB <span>FITNESS</span></h1>
-    <p style="color: #666; letter-spacing: 2px;">Nazir & Arif ilə Peşəkar Kosmik Məşqlər</p>
-    <button onclick="startJourney()" class="btn-galaxy" style="width: auto; padding: 15px 50px; margin-top: 40px; border: 2px solid white;">ENTER THE GALAXY</button>
+    <h1>NB <span>FITNESS</span> ACADEMY</h1>
+    <p>Peşəkar Məşq, Real Nəticə</p>
 </header>
 
 <div class="container">
+    
+    <div class="coach-grid">
+        <div class="coach-card">
+            <img src="nazir.jpg" class="coach-img" alt="Nazir İbrahimov">
+            <div class="coach-overlay">
+                <h2>NAZİR İBRAHİMOV</h2>
+                <p>GÜC VƏ KÜTLƏ MÜTƏXƏSSİSİ</p>
+                <a href="tel:0702946819" class="btn-call">ZƏNG ET: 070 294 68 19</a>
+            </div>
+        </div>
+        <div class="coach-card">
+            <img src="arif.jpg" class="coach-img" alt="Arif Bağırov">
+            <div class="coach-overlay">
+                <h2>ARİF BAĞIROV</h2>
+                <p>ESTETİKA VƏ BODYBUILDING</p>
+                <a href="tel:0514102531" class="btn-call">ZƏNG ET: 051 410 25 31</a>
+            </div>
+        </div>
+    </div>
+
     <div class="dashboard-grid">
         
         <div class="card">
-            <h3>⚖️ İNKİŞAF QRAFİKİ</h3>
-            <p>Qol ölçünü yaz, 90 gün sonranı gör:</p>
-            <input type="number" id="c-arm" placeholder="00"> <span style="font-size: 20px;">SM</span>
-            <button onclick="predict()" class="btn-galaxy">GƏLƏCƏYİ SKAN ET</button>
-            <div id="p-res" class="res-box">Gələcəyin bura çıxacaq...</div>
+            <h3>📈 3 AYLIQ İNKİŞAF PLANI</h3>
+            <p style="font-size: 14px; color: var(--text-gray);">Mövcud qol ölçünüzü yazın:</p>
+            <input type="number" id="armSize" placeholder="Qol ölçüsü (sm)">
+            <button onclick="predictProgress()" class="btn-tool">HESABLA</button>
+            <div id="predictRes" class="res-box">Nəticə bura çıxacaq...</div>
         </div>
 
         <div class="card">
-            <h3>🎯 HƏDƏF ƏZƏLƏ</h3>
-            <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; gap: 8px;">
-                <button onclick="sm('sinə')" class="btn-galaxy" style="margin:0; font-size:10px;">SİNƏ</button>
-                <button onclick="sm('ayaq')" class="btn-galaxy" style="margin:0; font-size:10px;">AYAQ</button>
-                <button onclick="sm('qol')" class="btn-galaxy" style="margin:0; font-size:10px;">QOL</button>
-                <button onclick="sm('kürək')" class="btn-galaxy" style="margin:0; font-size:10px;">KÜRƏK</button>
-            </div>
-            <div id="m-res" class="res-box" style="font-size:14px; line-height:1.4;">Metodu öyrənmək üçün seçin...</div>
+            <h3>🍗 PROTEİN EHTİYACI</h3>
+            <input type="number" id="weight" placeholder="Çəkiniz (kq)">
+            <button onclick="calcProtein()" class="btn-tool">HESABLA</button>
+            <div id="proteinRes" class="res-box">Gündəlik protein miqdarı...</div>
         </div>
 
-        <div class="card" id="power-card">
-            <h3>🌡️ GÜC ANALİZİ</h3>
-            <select id="ex-type">
-                <option value="100">BENCH PRESS</option>
-                <option value="140">SQUAT</option>
-                <option value="160">DEADLIFT</option>
+        <div class="card">
+            <h3>📱 MƏŞQ TEYMERİ (FASİLƏ)</h3>
+            <div class="timer-display" id="timer">01:00</div>
+            <button onclick="startTimer()" class="btn-tool" style="background: var(--main-red);">BAŞLAT (60 SAN)</button>
+        </div>
+
+        <div class="card">
+            <h3>🧬 GENETİK TİP TESTİ</h3>
+            <select id="bone">
+                <option value="1">Nazik biləklər</option>
+                <option value="2">Normal/Güclü biləklər</option>
+                <option value="3">Qalın biləklər</option>
             </select>
-            <input type="number" id="l-kg" placeholder="00"> <span style="font-size: 20px;">KG</span>
-            <button onclick="checkI()" class="btn-galaxy">VƏZİYYƏTİ GÖR</button>
-            <div id="i-res" class="res-box">Səviyyə bura çıxacaq...</div>
+            <button onclick="checkBody()" class="btn-tool">ANALİZ ET</button>
+            <div id="bodyRes" class="res-box">Bədən tipiniz...</div>
         </div>
 
         <div class="card">
-            <h3>🧬 GENETİK TEST</h3>
-            <select id="q1">
-                <option value="1">Nazik / İncə biləklər</option>
-                <option value="2">Orta / Güclü biləklər</option>
-                <option value="3">Qalın / Geniş biləklər</option>
-            </select>
-            <button onclick="checkB()" class="btn-galaxy">TİPİ ÖYRƏN</button>
-            <div id="b-res" class="res-box">Sizin genetika...</div>
-        </div>
-
-        <div class="card">
-            <h3>⚡ ENERJİ SƏVİYYƏN</h3>
-            <select id="sleep" onchange="upEn()">
-                <option value="30">Yuxu: < 6 saat</option>
-                <option value="70">Yuxu: 7-8 saat</option>
+            <h3>⚡ ENERJİ SƏVİYYƏSİ</h3>
+            <select id="sleep">
+                <option value="40">Yuxu: 5-6 saat</option>
                 <option value="100">Yuxu: 8+ saat</option>
             </select>
-            <select id="food" onchange="upEn()">
-                <option value="20">Yemək: Qeyri-sağlam</option>
-                <option value="60">Yemək: Orta</option>
-                <option value="100">Yemək: Proteinli</option>
+            <button onclick="checkEnergy()" class="btn-tool">YOXLA</button>
+            <div id="energyRes" class="res-box">Məşqə hazırsınız?</div>
+        </div>
+
+        <div class="card">
+            <h3>🔍 ƏZƏLƏ SKANERİ</h3>
+            <select id="muscle">
+                <option value="sinə">Sinə</option>
+                <option value="ayaq">Ayaq</option>
+                <option value="qol">Qol</option>
+                <option value="kürək">Kürək</option>
             </select>
-            <p style="font-size: 10px; color: #333; margin-top: 10px; text-align:center;">Nəticə yuxarıda yenilənir ↑</p>
-        </div>
-
-        <div class="card" style="border-color: var(--gold);">
-            <h3 style="color: var(--gold);">🏆 LİDERLƏR (PRO)</h3>
-            <div class="leader-item"><div>Elvin M.</div> <div style="color:var(--cyan)">-12kq</div></div>
-            <div class="leader-item"><div>Rauf S.</div> <div style="color:var(--red)">210kq DL</div></div>
-            <div class="leader-item"><div>Sen de yazdir!</div> <div>🔥</div></div>
-        </div>
-
-        <div class="card">
-            <h3>🎧 WORKOUT BEATS</h3>
-            <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; font-size: 13px; margin-bottom: 5px;">🎵 Aggressive Phonk Mix</div>
-            <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; font-size: 13px; margin-bottom: 5px;">🎵 Gym Radio 2026</div>
-            <button onclick="beastActivation()" class="btn-galaxy" style="background:var(--red); border-color:var(--red);">🔥 BEAST MODE (NIGHT)</button>
-        </div>
-
-        <div class="card">
-            <h3>📸 TRANSFORM SAMPLES</h3>
-            <div class="transform-slider">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500" class="t-img t-before">
-                <img src="https://images.unsplash.com/photo-1541534741688-6078c64b52d3?w=500" class="t-img t-after">
-            </div>
-            <p style="font-size:10px; color:#333; text-align:center; margin-top:5px;">Mausu gətir və 3 ayı gör ↑</p>
-        </div>
-
-        <div class="card" style="grid-column: span 1;">
-            <h3>📱 WORKOUT TIMER</h3>
-            <div class="timer-val" id="t-display">01:00</div>
-            <button onclick="startT()" class="btn-galaxy">FASİLƏNİ BAŞLAT (60s)</button>
+            <button onclick="scanMuscle()" class="btn-tool">SKAN ET</button>
+            <div id="muscleRes" class="res-box">Məşqçi məsləhəti...</div>
         </div>
 
     </div>
 
-    <h2 class="section-title">GALAXY COMMANDERS</h2>
-    <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
-        <div class="coach-card">
-            <img src="nazir.jpg" class="coach-img">
-            <div class="coach-info">
-                <h2 style="font-family: 'Syncopate'; font-weight: 700;">NAZİR İBRAHİMOV</h2>
-                <p style="color: var(--red); letter-spacing: 3px;">STRENGTH & GALAXY COMMANDER</p>
-                <a href="tel:0702946819" class="btn-galaxy" style="width: auto;">📞 ƏLAQƏ: 294-68-19</a>
-            </div>
-        </div>
-        <div class="coach-card">
-            <img src="arif.jpg" class="coach-img">
-            <div class="coach-info">
-                <h2 style="font-family: 'Syncopate'; font-weight: 700;">ARİF BAĞIROV</h2>
-                <p style="color: var(--cyan); letter-spacing: 3px;">AESTHETIC & POSING PRO</p>
-                <a href="tel:0514102531" class="btn-galaxy" style="width: auto; border-color:var(--cyan); color:var(--cyan);">📞 ƏLAQƏ: 410-25-31</a>
-            </div>
-        </div>
+    <div style="text-align: center; margin-top: 80px;">
+        <h2 style="font-size: 30px;">MƏŞQLƏRƏ BAŞLAMAQ İSTƏYİRSƏN?</h2>
+        <p style="color: var(--text-gray); margin-bottom: 30px;">Bizimlə birbaşa əlaqə saxla və proqramını al.</p>
+        <button onclick="sendWhatsApp()" class="btn-tool" style="width: auto; padding: 20px 60px; background: #25d366; font-size: 20px;">🚀 WHATSAPP İLƏ YAZ</button>
     </div>
 
-</div>
-
-<div class="ws-link" onclick="sendWS('General')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
 </div>
 
 <script>
-    // Starry Background Logic (3. Kosmik Nebula)
-    const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    let stars = []; for(let i=0; i<300; i++) stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*2, speed: Math.random()*0.4 });
-    function drawStars() { ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "white"; stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > canvas.height) s.y = 0; }); requestAnimationFrame(drawStars); } drawStars();
+    function predictProgress() {
+        let a = parseFloat(document.getElementById('armSize').value);
+        if(a) document.getElementById('predictRes').innerHTML = `Nazir bəylə 3 ayda hədəf: <b>${(a+3.5).toFixed(1)} sm</b> (+3.5 sm artım)`;
+    }
 
-    // 1 & 2. Gələcək Təxmini & İnkişaf
-    function predict() { let a = parseFloat(document.getElementById('c-arm').value); if(a) document.getElementById('p-res').innerHTML = `Gələcək Təxmini (90 gün): <br><b>${(a+3.5).toFixed(1)} SM</b> (+3.5)`; }
+    function calcProtein() {
+        let w = document.getElementById('weight').value;
+        if(w) document.getElementById('proteinRes').innerHTML = `Gündəlik: <b>${w*2}q Protein</b><br>Təxminən 600q toyuq filesi.`;
+    }
 
-    // 4. Əzələ Skaneri Metodu
-    function sm(m) { const tips = { 'sinə': '<b>Sinə:</b> Bench Press (4x10) - Barı partlayışla qaldır.', 'ayaq': '<b>Ayaq:</b> Squat (4x8) - Tam aşağı oturun.', 'qol': '<b>Qol:</b> Bicep Curl (3x12) - Yuxarıda mütləq sıxın.', 'kürək': '<b>Kürək:</b> Deadlift (3x5) - Texnika hər şeydir.' }; document.getElementById('m-res').innerHTML = tips[m]; }
+    let timeLeft = 60, timerId;
+    function startTimer() {
+        clearInterval(timerId); timeLeft = 60;
+        timerId = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').innerText = `00:${timeLeft < 10 ? '0'+timeLeft : timeLeft}`;
+            if(timeLeft <= 0) { clearInterval(timerId); alert("Fasilə bitdi! Setə başla!"); }
+        }, 1000);
+    }
 
-    // 3 & 10. İntensivlik (Power Meter)
-    function checkI() { let m = document.getElementById('ex-type').value, k = document.getElementById('l-kg').value, r = document.getElementById('i-res'); let p = (k / m) * 100; r.innerHTML = p < 50 ? "🟡 YÜNGÜL" : (p < 85 ? "🟠 ORTA / İDEAL" : "🔴 AĞIR / BEAST"); }
+    function checkBody() {
+        let b = document.getElementById('bone').value;
+        document.getElementById('bodyRes').innerText = b == "1" ? "EKTOMORF: Kütlə artımı proqramı lazımdır." : "MEZOMORF/ENDOMORF: Güc proqramı idealdır.";
+    }
 
-    // 5. Soma Testi (Genetik)
-    function checkB() { let q = document.getElementById('q1').value; document.getElementById('b-res').innerText = q == "1" ? "EKTOMORF: Nazir ilə kütlə proqramına hazırlaş!" : "MEZOMORF/ENDOMORF: Güc rekordları səni gözləyir!"; }
+    function checkEnergy() {
+        let s = document.getElementById('sleep').value;
+        document.getElementById('energyRes').innerText = s == "100" ? "Enerji 100%! Bu gün rekord qırmağın vaxtıdır!" : "Enerji orta. Diqqətli olun.";
+    }
 
-    // 6. Günün Enerji Barı
-    function upEn() { let s = parseInt(document.getElementById('sleep').value), f = parseInt(document.getElementById('food').value); let total = (s+f)/2; document.getElementById('e-val').innerText = total + "%"; if(total > 80) { let msg = new SpeechSynthesisUtterance("Günün enerjisi əla! Rekord qırmağın tam vaxtıdır."); window.speechSynthesis.speak(msg); } }
+    function scanMuscle() {
+        const d = { 'sinə': 'Bench Press: Barı partlayışla qaldırın.', 'ayaq': 'Squat: Tam aşağı oturun.', 'qol': 'Curl: Yuxarıda mütləq sıxın.', 'kürək': 'Deadlift: Beli düz saxlayın.' };
+        document.getElementById('muscleRes').innerHTML = d[document.getElementById('muscle').value];
+    }
 
-    // 11. Beast Mode (Night Mode - Səsli)
-    function beastActivation() { document.body.style.backgroundColor = "black"; document.body.style.boxShadow = "inset 0 0 100px red"; let speech = new SpeechSynthesisUtterance("Beast mode activated. Let's show them Nazir!"); window.speechSynthesis.speak(speech); setTimeout(() => { document.body.style.boxShadow = "none"; }, 3000); }
-
-    // Fasilə Teymer
-    let tl = 60, ti; function startT() { clearInterval(ti); tl = 60; ti = setInterval(() => { tl--; document.getElementById('t-display').innerText = `00:${tl < 10 ? '0'+tl : tl}`; if(tl <= 0) { clearInterval(ti); alert("Fasilə bitdi! Məşqə DAVAM ET! 🔥"); } }, 1000); }
-
-    // 10. Səsli Motivasiya (Girişdə)
-    function startJourney() { window.scrollTo(0, window.innerHeight); let audio = new SpeechSynthesisUtterance("Welcome to NB Galaxy, Nazir. Let's break limits today."); window.speechSynthesis.speak(audio); }
-
-    // WHATSAPP İNTEQRASİYASI
-    function sendWS(type) { let phone = "994702946819"; let msg = `Salam Nazir bəy, saytdan gəlirəm. '${type}' proqramı ilə limitləri aşmaq istəyirəm!`; window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank'); }
+    function sendWhatsApp() {
+        let msg = "Salam Nazir bəy, saytınızdan gəlirəm. Məşqlərə başlamaq istəyirəm!";
+        window.open(`https://wa.me/994702946819?text=${encodeURIComponent(msg)}`, '_blank');
+    }
 </script>
 
-<footer style="text-align: center; padding: 60px; color: #111; font-family: 'Syncopate'; font-size: 10px; border-top: 1px solid #111; margin-top: 50px;">
-    SYSTEM: NB GALAXY v8.0 | COMMANDER: NAZİR İBRAHİMOV | BAKU 2026
+<footer>
+    NB FITNESS ACADEMY | BÜTÜN HÜQUQLAR QORUNUR © 2026
 </footer>
 
 </body>
