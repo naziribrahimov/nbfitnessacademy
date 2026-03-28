@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NB FITNESS</title>
+    <title>NB FITNESS | ULTIMATE APP</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0d0d0d; }
@@ -30,7 +30,7 @@
         .coach-card { position: relative; width: 100%; height: 78vh; border-radius: 20px; overflow: hidden; margin-bottom: 15px; border: 1px solid #1a1a1a; }
         .coach-card img { width: 100%; height: 100%; object-fit: cover; }
         .nazir-img { object-position: center top; }
-        .arif-img { object-position: center 8% !important; } /* Arifin bədəni tam görünsün */
+        .arif-img { object-position: center top !important; } /* Arifin bədəni tam görünsün */
 
         .overlay { position: absolute; bottom: 0; width: 100%; padding: 35px 25px; background: linear-gradient(transparent, rgba(0,0,0,1) 85%); box-sizing: border-box; }
         .role { font-family: 'Orbitron'; color: var(--red); font-size: 10px; letter-spacing: 2px; font-weight: bold; margin-bottom: 5px; }
@@ -87,7 +87,7 @@
                 <input type="number" id="age" placeholder="Yaş">
                 <input type="number" id="height" placeholder="Boy (sm)">
             </div>
-            <input type="number" id="weight" placeholder="Çəki (kq)">
+            <input type="number" id="weight" placeholder="ÇƏKİ (KQ)">
             <button class="btn-action" onclick="fullAnalyze()">ANALİZİ BAŞLAT</button>
             <div id="anal-res" class="res">BMI və İdeal çəki hesablanacaq.</div>
         </div>
@@ -118,6 +118,19 @@
             </select>
             <button class="btn-action" onclick="scanM()">SKAN ET</button>
             <div id="m-res" class="res">Düzgün texnika tövsiyyəsi...</div>
+        </div>
+        <div class="card">
+            <h3>NAZİRİN MARKET SƏBƏTİ</h3>
+            <div class="res" style="border-left-color:var(--gold)">
+                🛒 <b>Nazirin Tövsiyəsi:</b><br>
+                - Toyuq Filesi (Əsas Protein)<br>
+                - Yulaf (Məşq qabağı enerji)<br>
+                - Yumurta (Protein və Sağlam Yağ)<br>
+                - Düyü (Məşq sonrası bərpa)<br>
+                - Kəsmik (Gecə bərpası)<br>
+                - Qoz/Badam (Sağlam Yağlar)<br>
+                - Qara Qəhvə (Məşq fokuslanması)
+            </div>
         </div>
         <div class="card">
             <h3>ZƏİF NÖQTƏ HƏLLİ</h3>
