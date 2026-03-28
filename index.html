@@ -3,168 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB Fitness Academy | Nazir & Arif</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <title>NB FITNESS | OFFICIAL DASHBOARD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --main-red: #ff3e3e; --dark-bg: #0a0a0a; --card-bg: #111111; --text-light: #ffffff; --gold: #d4af37; }
-        body { font-family: 'Oswald', sans-serif; background: var(--dark-bg); color: var(--text-light); margin: 0; padding: 0; overflow-x: hidden; }
+        :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #080808; --card-bg: #121212; }
         
-        /* Header */
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200'); 
-            background-size: cover; padding: 80px 20px; text-align: center; border-bottom: 5px solid var(--main-red); 
-        }
-        h1 { font-size: 50px; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-        h1 span { color: var(--main-red); }
-        .motto { font-size: 18px; color: #aaa; margin-top: 10px; text-transform: uppercase; }
+        body { background: var(--dark); color: white; font-family: 'Rajdhani', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #1a0505 0%, #080808 100%); z-index: -1; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .section-title { text-align: center; color: var(--main-red); font-size: 35px; text-transform: uppercase; margin: 60px 0 30px; border-bottom: 2px solid #222; padding-bottom: 10px; }
+        header { padding: 50px 20px; text-align: center; border-bottom: 2px solid var(--red); background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        h1 { font-family: 'Orbitron'; font-size: clamp(30px, 5vw, 50px); margin: 0; text-transform: uppercase; letter-spacing: 5px; }
+        h1 span { color: var(--red); text-shadow: 0 0 15px var(--red); }
+        .tagline { color: var(--blue); letter-spacing: 3px; font-weight: bold; margin-top: 10px; font-size: 14px; }
 
-        /* Məşqçi Kartları */
-        .coach-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .coach-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; width: 100%; max-width: 450px; border: 1px solid #222; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .coach-card:hover { transform: translateY(-10px); border-color: var(--main-red); }
-        .img-box { width: 100%; height: 500px; position: relative; }
-        .coach-img { width: 100%; height: 100%; object-fit: cover; }
-        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 20px; box-sizing: border-box; }
-        .name { font-size: 28px; font-weight: bold; margin: 0; text-transform: uppercase; }
-        .title { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
 
-        /* Kalkulyator */
-        .bmi-box { background: #161616; padding: 40px; border-radius: 15px; max-width: 600px; margin: 0 auto; border: 1px solid var(--main-red); text-align: center; }
-        .bmi-input { width: 80%; padding: 15px; margin: 10px 0; border-radius: 5px; border: none; background: #222; color: white; font-size: 18px; }
-        .calc-btn { background: var(--main-red); color: white; padding: 15px 40px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 18px; margin-top: 10px; }
-        #bmi-result { margin-top: 25px; font-size: 22px; color: var(--gold); }
+        /* Dashboard Mozaika (Grid) */
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
 
-        /* Qiymət Paketləri */
-        .price-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .price-card { background: #161616; padding: 30px; border-radius: 10px; border: 1px solid #222; width: 280px; text-align: center; transition: 0.3s; }
-        .price-card:hover { border-color: var(--main-red); transform: scale(1.05); }
-        .price { font-size: 35px; color: white; margin: 20px 0; font-weight: bold; }
-        .price span { font-size: 16px; color: #777; }
+        .card { background: var(--card-bg); border: 1px solid #222; border-radius: 20px; padding: 25px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { border-color: var(--red); box-shadow: 0 0 30px rgba(255, 0, 60, 0.2); transform: translateY(-5px); }
+        .card h3 { font-family: 'Orbitron'; font-size: 18px; color: var(--red); margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
-        /* Cədvəl */
-        .schedule-table { width: 100%; border-collapse: collapse; background: #111; color: #ccc; margin-top: 20px; }
-        .schedule-table th, .schedule-table td { padding: 15px; border: 1px solid #222; text-align: center; }
-        .schedule-table th { background: var(--main-red); color: white; }
+        input, select { width: 100%; padding: 12px; margin: 8px 0; background: #000; border: 1px solid #333; color: white; border-radius: 8px; font-family: 'Rajdhani'; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--blue); box-shadow: 0 0 10px var(--blue); }
 
-        .btn-call { display: block; background: var(--main-red); color: white; text-align: center; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; }
+        .btn { width: 100%; padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-family: 'Orbitron'; font-weight: bold; text-transform: uppercase; transition: 0.3s; margin-top: 10px; }
+        .btn-red { background: var(--red); color: white; }
+        .btn-blue { background: var(--blue); color: black; }
 
-        footer { text-align: center; padding: 60px; background: #000; color: #444; border-top: 1px solid #111; margin-top: 50px; }
+        .res-box { margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px; font-size: 15px; min-height: 50px; color: #ddd; border-left: 3px solid var(--gold); }
+
+        /* Məşqçi Bölməsi */
+        .coach-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+        .coach-card { display: flex; align-items: center; gap: 20px; background: #111; padding: 20px; border-radius: 20px; border: 1px solid #222; }
+        .coach-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--red); box-shadow: 0 0 15px var(--red); }
+        .coach-info h4 { margin: 0; font-family: 'Orbitron'; color: var(--gold); font-size: 18px; }
+        .call-btn { display: inline-block; margin-top: 10px; color: var(--blue); text-decoration: none; font-weight: bold; font-size: 18px; }
+
+        .timer-val { font-size: 55px; font-family: 'Orbitron'; color: var(--red); text-align: center; margin: 15px 0; text-shadow: 0 0 10px var(--red); }
+
+        .m-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .m-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 10px 5px; font-size: 11px; cursor: pointer; border-radius: 5px; font-family: 'Orbitron'; transition: 0.3s; }
+        .m-btn:hover { background: var(--red); border-color: var(--red); }
+
+        footer { text-align: center; padding: 60px; color: #444; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>NB <span>FITNESS</span> ACADEMY</h1>
-    <p class="motto">Nazir İbrahimov & Arif Bağırov ilə Peşəkar Məşqlər</p>
+    <div class="tagline">PREMIUM TRAINING SYSTEMS | V5.1</div>
 </header>
 
 <div class="container">
-    <h2 class="section-title">Məşqçilərimiz</h2>
-    <div class="coach-grid">
+    <div class="dashboard-grid">
+        
+        <div class="card">
+            <h3>🎯 ƏZƏLƏ FOKUSU</h3>
+            <div class="m-grid">
+                <button onclick="sm('sinə')" class="m-btn">SİNƏ</button>
+                <button onclick="sm('ayaq')" class="m-btn">AYAQ</button>
+                <button onclick="sm('qol')" class="m-btn">QOL</button>
+                <button onclick="sm('kürək')" class="m-btn">KÜRƏK</button>
+                <button onclick="sm('çiyin')" class="m-btn">ÇİYİN</button>
+                <button onclick="sm('qarın')" class="m-btn">QARIN</button>
+            </div>
+            <div id="m-res" class="res-box">Hərəkətləri görmək üçün seçin...</div>
+        </div>
+
+        <div class="card">
+            <h3>🥗 KALORİ ANALİZİ</h3>
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="cw" placeholder="Çəki (kq)">
+                <input type="number" id="ch" placeholder="Boy (sm)">
+            </div>
+            <input type="number" id="ca" placeholder="Yaşınız">
+            <button onclick="cc()" class="btn btn-blue">HESABLA</button>
+            <div id="c-res" class="res-box">Sizin gündəlik ehtiyacınız...</div>
+        </div>
+
+        <div class="card">
+            <h3>🌡️ MƏŞQ TƏZYİQİ</h3>
+            <select id="et">
+                <option value="100">BENCH PRESS</option>
+                <option value="140">SQUAT</option>
+                <option value="160">DEADLIFT</option>
+            </select>
+            <input type="number" id="lk" placeholder="Qaldırılan Çəki (kq)">
+            <button onclick="ci()" class="btn btn-red">VƏZİYYƏTİ YOXLA</button>
+            <div id="i-res" class="res-box">Analiz gözlənilir...</div>
+        </div>
+
+        <div class="card">
+            <h3>🍗 PROTEİN REHBERİ</h3>
+            <input type="number" id="pw" placeholder="Bədən çəkisi (kq)">
+            <button onclick="cp()" class="btn btn-blue">HESABLA</button>
+            <div id="p-res" class="res-box">Protein miqdarı və qida təxmini...</div>
+        </div>
+
+        <div class="card">
+            <h3>🥦 QİDALANMA PLANI</h3>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="fs('mass')" class="btn btn-red">KÜTLƏ</button>
+                <button onclick="fs('cut')" class="btn btn-blue">ARIQLAMA</button>
+            </div>
+            <div id="f-res" class="res-box">Məqsədinizə uyğun tövsiyələr...</div>
+        </div>
+
+        <div class="card">
+            <h3>📱 MƏŞQ TEYMERİ</h3>
+            <div class="timer-val" id="tv">01:00</div>
+            <button onclick="st()" class="btn btn-red">FASİLƏNİ BAŞLAT (60s)</button>
+            <button onclick="rt()" style="background:none; border:none; color:#555; cursor:pointer; margin-top:5px; font-family:'Orbitron'; font-size:10px;">SIFIRLA</button>
+        </div>
+
+    </div>
+
+    <h2 style="font-family: 'Orbitron'; text-align: center; color: var(--red); margin-top: 60px; letter-spacing: 3px;">PEŞƏKAR MƏŞQÇİLƏR</h2>
+    <div class="coach-container">
         <div class="coach-card">
-            <div class="img-box">
-                <img src="nazir.jpg" class="coach-img" alt="Nazir İbrahimov">
-                <div class="overlay">
-                    <p class="name">Nazir İbrahimov</p>
-                    <p class="title">Baş Məşqçi / Güc Eksperti</p>
-                </div>
-            </div>
-            <div style="padding: 20px;">
-                <p>Nəticə yönümlü proqramlar və fərdi yanaşma.</p>
-                <a href="tel:0702956819" class="btn-call">📞 ƏLAQƏ: 070-294-68-19</a>
+            <img src="nazir.jpg" class="coach-img">
+            <div class="coach-info">
+                <h4>NAZİR İBRAHİMOV</h4>
+                <p style="font-size: 12px; color: #888;">STRENGTH & POWER COACH</p>
+                <a href="tel:0702946819" class="call-btn">📞 070-294-68-19</a>
             </div>
         </div>
-
         <div class="coach-card">
-            <div class="img-box">
-                <img src="arif.jpg" class="coach-img" alt="Arif Bağırov">
-                <div class="overlay">
-                    <p class="name">Arif Bağırov</p>
-                    <p class="title">Baş Məşqçi / Bodybuilding</p>
-                </div>
-            </div>
-            <div style="padding: 20px;">
-                <p>Müasir texnika və peşəkar qidalanma planları.</p>
-                <a href="tel:0514102531" class="btn-call">📞 ƏLAQƏ: 051-410-25-31</a>
+            <img src="arif.jpg" class="coach-img">
+            <div class="coach-info">
+                <h4>ARİF BAĞIROV</h4>
+                <p style="font-size: 12px; color: #888;">AESTHETIC & FITNESS PRO</p>
+                <a href="tel:0514102531" class="call-btn">📞 051-410-25-31</a>
             </div>
         </div>
-    </div>
-
-    <h2 class="section-title">Xidmətlər və Qiymətlər</h2>
-    <div class="price-grid">
-        <div class="price-card">
-            <h3>Arıqlama</h3>
-            <p>Yağ yandırma fokuslu</p>
-            <div class="price">40 AZN <span>/ay</span></div>
-        </div>
-        <div class="price-card" style="border-color: var(--gold);">
-            <h3 style="color: var(--gold);">Kütlə Yığımı</h3>
-            <p>Güc və əzələ artımı</p>
-            <div class="price">50 AZN <span>/ay</span></div>
-        </div>
-        <div class="price-card">
-            <h3>Fərdi Məşq</h3>
-            <p>1-ə-1 özəl dərslər</p>
-            <div class="price">120 AZN <span>/ay</span></div>
-        </div>
-    </div>
-
-    <h2 class="section-title">BMI Kalkulyatoru</h2>
-    <div class="bmi-box">
-        <p>Formanızı öyrənmək üçün boy və çəkinizi yazın:</p>
-        <input type="number" id="weight" class="bmi-input" placeholder="Çəki (kq)">
-        <input type="number" id="height" class="bmi-input" placeholder="Boy (sm)">
-        <br>
-        <button onclick="calculateBMI()" class="calc-btn">Hesabla</button>
-        <div id="bmi-result">Nəticəni görmək üçün hesablayın...</div>
-    </div>
-
-    <h2 class="section-title">Həftəlik Məşq Planı</h2>
-    <div style="overflow-x:auto;">
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th>Gün</th>
-                    <th>Məşq Programı</th>
-                    <th>Məşqçi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Bazar ertəsi</td><td>Sinə və Triseps</td><td>Nazir İbrahimov</td></tr>
-                <tr><td>Çərşənbə axşamı</td><td>Kürək və Biseps</td><td>Arif Bağırov</td></tr>
-                <tr><td>Çərşənbə</td><td>Ayaq və Qarın</td><td>Nazir İbrahimov</td></tr>
-                <tr><td>Cümə axşamı</td><td>Çiyin və Trapeziya</td><td>Arif Bağırov</td></tr>
-                <tr><td>Cümə</td><td>Full Body (Bütün bədən)</td><td>Nazir & Arif</td></tr>
-            </tbody>
-        </table>
     </div>
 </div>
 
-<footer>
-    <p>NB FITNESS ACADEMY © 2026. Bütün hüquqlar qorunur.</p>
-    <p>Qurucu və Dizayner: Nazir İbrahimov</p>
-</footer>
-
 <script>
-function calculateBMI() {
-    let w = document.getElementById('weight').value;
-    let h = document.getElementById('height').value / 100;
-    if(w > 0 && h > 0) {
-        let bmi = (w / (h * h)).toFixed(1);
-        let msg = "";
-        if(bmi < 18.5) msg = "Çəkiniz azdır. Yaxşı qidalanın!";
-        else if(bmi < 25) msg = "Təbriklər! Çəkiniz normaldır.";
-        else if(bmi < 30) msg = "Artıq çəki. Məşqə ehtiyac var!";
-        else msg = "Piylənmə. Təcili rejimə başlayın!";
-        document.getElementById('bmi-result').innerHTML = "BMI: " + bmi + " - " + msg;
-    } else {
-        alert("Zəhmət olmasa rəqəmləri düzgün yazın!");
+    // 1. Muscle Map
+    function sm(m) {
+        const d = {
+            'sinə': '• Bench Press (4x10)<br>• Incline DB Press (3x12)<br>• Cable Fly (3x15)',
+            'ayaq': '• Squat (4x8)<br>• Leg Press (3x12)<br>• Leg Extension (3x15)',
+            'qol': '• Barbell Curl (3x10)<br>• Tricep Pushdown (3x12)<br>• Hammer Curl (3x12)',
+            'kürək': '• Deadlift (3x5)<br>• Lat Pulldown (4x10)<br>• T-Bar Row (3x10)',
+            'çiyin': '• Overhead Press (4x8)<br>• Lateral Raise (4x15)<br>• Rear Delt Fly (3x15)',
+            'qarın': '• Hanging Leg Raise (3x15)<br>• Plank (3x60s)<br>• Cable Crunch (3x20)'
+        };
+        document.getElementById('m-res').innerHTML = `🔥 <b>${m.toUpperCase()}:</b><br>${d[m]}`;
     }
-}
+
+    // 2. Calorie
+    function cc() {
+        let w = parseFloat(document.getElementById('cw').value), h = parseFloat(document.getElementById('ch').value), a = parseFloat(document.getElementById('ca').value);
+        if(w && h && a) {
+            let b = (10 * w) + (6.25 * h) - (5 * a) + 5;
+            document.getElementById('c-res').innerHTML = `Bazal: <b>${b.toFixed(0)} kcal</b><br>Kütlə Artımı: <b>${(b+500).toFixed(0)} kcal</b>`;
+        }
+    }
+
+    // 3. Intensity
+    function ci() {
+        let m = document.getElementById('et').value, k = document.getElementById('lk').value, r = document.getElementById('i-res');
+        let p = (k / m) * 100;
+        if(p < 50) { r.innerHTML = "🟡 SƏVİYYƏ: YÜNGÜL"; r.style.color = "#ffbd39"; }
+        else if(p < 85) { r.innerHTML = "🟠 SƏVİYYƏ: ORTA (İDEAL)"; r.style.color = "#ffa500"; }
+        else { r.innerHTML = "🔴 SƏVİYYƏ: AĞIR / BEAST MODE"; r.style.color = "#ff003c"; }
+    }
+
+    // 4. Protein
+    function cp() {
+        let w = document.getElementById('pw').value;
+        if(w) {
+            let p = w * 2;
+            document.getElementById('p-res').innerHTML = `Ehtiyac: <b>${p}q Protein</b><br>Təxminən: <b>${(p*4.5).toFixed(0)}q</b> toyuq filesi`;
+        }
+    }
+
+    // 5. Food Strategy
+    function fs(s) {
+        let r = document.getElementById('f-res');
+        r.innerHTML = s === 'mass' ? "🥩 <b>NAZİR:</b> Karbohidratı artır, mütləq ağır çəkilərlə təməl hərəkətləri et." : "🥗 <b>ARİF:</b> Proteini yüksək saxla, şəkəri kəs, gündəlik addım sayını 10k-ya çatdır.";
+    }
+
+    // 6. Timer
+    let tl = 60, ti;
+    function st() {
+        clearInterval(ti); tl = 60;
+        ti = setInterval(() => {
+            tl--;
+            document.getElementById('tv').innerText = `00:${tl < 10 ? '0'+tl : tl}`;
+            if(tl <= 0) { clearInterval(ti); alert("VAXT BİTDİ! SETƏ QAYIDIN! 🔥"); }
+        }, 1000);
+    }
+    function rt() { clearInterval(ti); document.getElementById('tv').innerText = "01:00"; }
 </script>
+
+<footer>
+    NB FITNESS ACADEMY | OFFICIAL SYSTEM v5.1 | BAKU 2026
+</footer>
 
 </body>
 </html>
