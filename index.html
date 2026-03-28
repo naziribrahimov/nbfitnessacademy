@@ -3,56 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NB FITNESS | ENGINEERS OF STRENGTH</title>
+    <title>NB FITNESS | OFFICIAL ACADEMY</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --red: #ff003c; --blue: #00f7ff; --gold: #ffbd39; --dark: #000000; --card: #0d0d0d; }
-        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        :root { 
+            --red: #ff003c; 
+            --blue: #00f7ff; 
+            --gold: #ffbd39; 
+            --dark: #000000; 
+            --card: #0d0d0d; 
+            --border: #1a1a1a;
+        }
+        
+        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth; }
 
-        header { text-align: center; padding: 25px; border-bottom: 2px solid var(--red); background: #000; position: sticky; top: 0; z-index: 100; }
-        header h1 { font-family: 'Orbitron'; font-size: 28px; margin: 0; letter-spacing: 4px; text-transform: uppercase; }
-        header h1 span { color: var(--red); }
+        header { 
+            text-align: center; padding: 25px; border-bottom: 2px solid var(--red); 
+            background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
+        }
+        header h1 { font-family: 'Orbitron'; font-size: clamp(20px, 4vw, 28px); margin: 0; letter-spacing: 5px; text-transform: uppercase; }
+        header h1 span { color: var(--red); text-shadow: 0 0 10px var(--red); }
 
         /* MƏŞQÇİ ŞƏKİLLƏRİ */
         .coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0; }
-        .coach-card { position: relative; height: 90vh; overflow: hidden; border-bottom: 3px solid #1a1a1a; }
-        .coach-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.6s ease-in-out; }
+        .coach-card { position: relative; height: 95vh; overflow: hidden; border-bottom: 3px solid var(--border); }
+        .coach-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.8s ease; }
         .coach-card:hover img { transform: scale(1.05); }
 
         .info-overlay { 
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 50px 40px; 
-            background: linear-gradient(transparent, rgba(0,0,0,0.98) 85%); box-sizing: border-box; 
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 60px 40px; 
+            background: linear-gradient(transparent, rgba(0,0,0,1) 80%); box-sizing: border-box; 
         }
-        .role { font-family: 'Orbitron'; font-size: 13px; letter-spacing: 4px; font-weight: bold; }
-        .name { font-family: 'Orbitron'; font-size: 45px; font-weight: 900; margin: 10px 0; text-transform: uppercase; line-height: 1; }
+        .role { font-family: 'Orbitron'; font-size: 14px; letter-spacing: 5px; font-weight: bold; margin-bottom: 5px; }
+        .name { font-family: 'Orbitron'; font-size: clamp(35px, 5vw, 50px); font-weight: 900; margin: 10px 0; text-transform: uppercase; line-height: 1; }
         
+        /* WHATSAPP DÜYMƏLƏRİ - RƏNGLİ */
         .ws-link { 
-            display: inline-flex; align-items: center; gap: 10px; padding: 14px 35px; 
+            display: inline-flex; align-items: center; gap: 12px; padding: 16px 40px; 
             text-decoration: none; font-family: 'Orbitron'; font-weight: bold; 
-            border-radius: 4px; font-size: 13px; transition: 0.3s; margin-top: 20px;
+            border-radius: 4px; font-size: 12px; transition: 0.4s; margin-top: 20px;
+            text-transform: uppercase; border: 1px solid transparent;
         }
-        .n-btn { background: var(--red); color: white; box-shadow: 0 5px 20px rgba(255, 0, 60, 0.4); }
-        .a-btn { background: var(--blue); color: black; box-shadow: 0 5px 20px rgba(0, 247, 255, 0.4); }
+        .n-btn { background: var(--red); color: white; box-shadow: 0 5px 25px rgba(255, 0, 60, 0.4); }
+        .a-btn { background: var(--blue); color: black; box-shadow: 0 5px 25px rgba(0, 247, 255, 0.4); }
+        .ws-link:hover { transform: translateY(-3px); filter: brightness(1.2); border-color: white; }
 
-        /* QİDA MƏSLƏHƏTİ SECTION */
-        .tip-section { background: var(--card); border: 1px solid #222; margin: 50px auto; padding: 40px; max-width: 1000px; border-radius: 15px; text-align: center; border-left: 5px solid var(--red); }
-        .tip-section h2 { font-family: 'Orbitron'; color: var(--gold); font-size: 18px; letter-spacing: 3px; margin-bottom: 20px; }
-        #daily-tip { font-style: italic; color: #eee; font-size: 19px; line-height: 1.6; font-weight: 300; }
+        /* QİDA MƏSLƏHƏTİ - GOLD VURĞU */
+        .tip-section { 
+            background: var(--card); border: 1px solid var(--border); margin: 60px auto; 
+            padding: 40px; max-width: 1000px; border-radius: 20px; text-align: center; 
+            border-left: 5px solid var(--gold); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .tip-section h2 { font-family: 'Orbitron'; color: var(--gold); font-size: 18px; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        #daily-tip { font-style: italic; color: #f0f0f0; font-size: 20px; line-height: 1.6; font-weight: 300; }
 
-        /* DASHBOARD GRID */
+        /* DASHBOARD TOOLS - NEON BORDERS */
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .tool-card { background: var(--card); border: 1px solid #1a1a1a; border-radius: 15px; padding: 30px; transition: 0.3s; }
-        .tool-card:hover { border-color: var(--red); }
-        h3 { font-family: 'Orbitron'; font-size: 15px; color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 15px; margin-top: 0; letter-spacing: 2px; }
+        .tool-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 35px; transition: 0.3s; }
+        .tool-card:hover { border-color: var(--red); box-shadow: 0 0 20px rgba(255, 0, 60, 0.1); }
+        h3 { font-family: 'Orbitron'; font-size: 15px; color: var(--gold); border-bottom: 1px solid #222; padding-bottom: 15px; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        input, select { width: 100%; padding: 14px; margin: 12px 0; background: #00; border: 1px solid #222; color: white; border-radius: 5px; font-family: 'Orbitron'; box-sizing: border-box; }
-        .btn-act { width: 100%; padding: 15px; border: none; border-radius: 5px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; background: #1a1a1a; color: white; transition: 0.3s; margin-top: 10px; font-size: 12px; }
-        .btn-act:hover { background: var(--red); }
+        input, select { 
+            width: 100%; padding: 15px; margin: 12px 0; background: #000; 
+            border: 1px solid #333; color: white; border-radius: 5px; font-family: 'Orbitron'; 
+            box-sizing: border-box; font-size: 14px; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--blue); }
+        
+        .btn-act { 
+            width: 100%; padding: 16px; border: none; border-radius: 5px; 
+            font-family: 'Orbitron'; font-weight: bold; cursor: pointer; 
+            background: #1a1a1a; color: white; transition: 0.3s; margin-top: 10px; 
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-act:hover { background: var(--red); box-shadow: 0 5px 15px rgba(255, 0, 60, 0.3); }
 
-        .res-box { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.6); border-radius: 5px; border-left: 4px solid var(--red); font-size: 15px; color: #ccc; }
+        .res-box { margin-top: 20px; padding: 18px; background: rgba(0,0,0,0.7); border-radius: 8px; border-left: 4px solid var(--blue); font-size: 15px; color: #eee; min-height: 30px; }
 
-        footer { text-align: center; padding: 80px; color: #222; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 3px; }
+        .timer-val { font-size: 50px; font-family: 'Orbitron'; color: var(--red); text-align: center; margin: 15px 0; text-shadow: 0 0 15px rgba(255, 0, 60, 0.5); }
+
+        footer { text-align: center; padding: 100px 20px; color: #222; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 4px; border-top: 1px solid #111; }
+
+        @media (max-width: 768px) { .coach-card { height: 80vh; } }
     </style>
 </head>
 <body>
@@ -65,7 +98,7 @@
     <div class="coach-card">
         <img src="nazir.jpg" alt="Nazir İbrahimov">
         <div class="info-overlay">
-            <div class="role" style="color: var(--red);">FOOD ENGINEER & HEAD COACH</div>
+            <div class="role" style="color: var(--red);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">NAZİR İBRAHİMOV</h2>
             <a href="https://wa.me/994702946819?text=Salam%20Nazir%20bəy,%20məşqlərə%20başlamaq%20istəyirəm." class="ws-link n-btn" target="_blank">📲 MƏŞQƏ BAŞLA (294-68-19)</a>
         </div>
@@ -73,7 +106,7 @@
     <div class="coach-card">
         <img src="arif.jpg" alt="Arif Bağırov">
         <div class="info-overlay">
-            <div class="role" style="color: var(--blue);">FOOD ENGINEER & HEAD COACH</div>
+            <div class="role" style="color: var(--blue);">BAŞ MƏŞQÇİ</div>
             <h2 class="name">ARİF BAĞIROV</h2>
             <a href="https://wa.me/994514102531?text=Salam%20Arif%20bəy,%20məşqlərə%20başlamaq%20istəyirəm." class="ws-link a-btn" target="_blank">📲 MƏŞQƏ BAŞLA (410-25-31)</a>
         </div>
@@ -83,56 +116,55 @@
 <div class="container">
     
     <div class="tip-section">
-        <h2>🥗 QİDA MÜHƏNDİSLƏRİNDƏN GÜNLÜK MƏSLƏHƏT</h2>
-        <p id="daily-tip">Yüklənir...</p>
+        <h2>🥗 GÜNLÜK QİDA MƏSLƏHƏTİ</h2>
+        <p id="daily-tip">Məlumat hazırlanır...</p>
     </div>
 
     <div class="dashboard">
         <div class="tool-card">
-            <h3>📈 3 AYLIQ İNKİŞAF</h3>
-            <input type="number" id="arm" placeholder="Qol ölçüsü (sm)">
-            <button onclick="predict()" class="btn-act">HESABLA</button>
-            <div id="p-res" class="res-box">Nəticə bura çıxacaq...</div>
+            <h3>📈 3 AYLIQ İNKİŞAF PLANI</h3>
+            <input type="number" id="arm" placeholder="Cari qol ölçüsü (sm)">
+            <button onclick="predict()" class="btn-act">ANALİZİ BAŞLAT</button>
+            <div id="p-res" class="res-box"></div>
         </div>
 
         <div class="tool-card">
-            <h3>🔍 ƏZƏLƏ SKANERİ</h3>
+            <h3>🔍 ƏZƏLƏ SKANERİ (AI)</h3>
             <select id="ms">
-                <option value="sinə">SİNƏ</option>
-                <option value="ayaq">AYAQ</option>
-                <option value="qol">QOL</option>
-                <option value="kürək">KÜRƏK</option>
+                <option value="sinə">SİNƏ ƏZƏLƏSİ</option>
+                <option value="ayaq">AYAQ ƏZƏLƏSİ</option>
+                <option value="qol">QOL ƏZƏLƏSİ</option>
+                <option value="kürək">KÜRƏK ƏZƏLƏSİ</option>
             </select>
             <button onclick="scan()" class="btn-act">SKAN ET</button>
-            <div id="m-res" class="res-box">Metodu gör...</div>
+            <div id="m-res" class="res-box"></div>
         </div>
 
         <div class="tool-card">
             <h3>📱 FASİLƏ TEYMERİ</h3>
-            <div style="font-size: 45px; font-family: 'Orbitron'; color: var(--red); text-align: center; margin: 10px 0;" id="time">01:00</div>
-            <button onclick="startT()" class="btn-act">BAŞLAT (60 SAN)</button>
+            <div class="timer-val" id="time">01:00</div>
+            <button onclick="startT()" class="btn-act" style="background:var(--red); color:white;">BAŞLAT (60 SAN)</button>
         </div>
 
         <div class="tool-card">
             <h3>🍗 PROTEİN KALKULYATORU</h3>
-            <input type="number" id="weight" placeholder="Çəkiniz (kq)">
+            <input type="number" id="weight" placeholder="Bədən çəkisi (kq)">
             <button onclick="calcP()" class="btn-act">HESABLA</button>
-            <div id="pr-res" class="res-box">Ehtiyac...</div>
+            <div id="pr-res" class="res-box"></div>
         </div>
     </div>
 
 </div>
 
 <script>
-    // Qida Mühəndisləri üçün xüsusi seçilmiş məsləhətlər
     const tips = [
-        "Məşqdən dərhal sonra protein və sürətli karbohidrat qəbulu əzələ anabolizmini başladır.",
-        "Qida mühəndisliyi baxımından: Hidratasiya (su) hüceyrə daxili təzyiq üçün şərtdir.",
-        "Kompleks karbohidratlar (yulaf, düyü) glikogen depolarını uzunmüddətli enerji ilə təmin edir.",
-        "Kazein proteini (kəsmik) gecə boyunca əzələ parçalanmasının qarşısını alır.",
-        "Omega-3 yağ turşuları oynaqlardakı iltihabı azaldır və bərpaya kömək edir.",
-        "BCAA və EAAs məşq zamanı əzələ dözümlülüyünü artırır.",
-        "Vitamin D və Maqnezium balansı testosteron səviyyəsi üçün kritik əhəmiyyət daşıyır."
+        "Məşqdən dərhal sonra protein və sürətli karbohidrat bərpanı 40% sürətləndirir.",
+        "Su normanı mütləq tamamla (Çəki x 0.033). Əzələlərin 75%-i sudan ibarətdir.",
+        "Kompleks karbohidratlar (yulaf, qəhvəyi düyü) gün boyu güclü qalmağı təmin edir.",
+        "Kazein proteini (kəsmik) yuxu zamanı əzələləri qidalandırır.",
+        "Omega-3 yağları oynaqlardakı iltihabı azaldır və bərpanı sürətləndirir.",
+        "Məşqdən əvvəl şəkərsiz qara qəhvə diqqəti və gücü artırır.",
+        "Gündəlik 7-8 saat keyfiyyətli yuxu əzələ artımı üçün ən vacib amildir."
     ];
 
     function showTip() {
@@ -143,17 +175,22 @@
 
     function predict() {
         let a = parseFloat(document.getElementById('arm').value);
-        if(a) document.getElementById('p-res').innerHTML = `Hədəf: <b>${(a+3.5).toFixed(1)} sm</b> <br> (Mühəndis hesabı ilə realdır!)`;
+        if(a) document.getElementById('p-res').innerHTML = `Nazir ilə 3 aya hədəf: <b style="color:var(--gold)">${(a+3.5).toFixed(1)} sm</b>`;
     }
 
     function scan() {
-        const d = { 'sinə': 'Bench Press: Barı yavaş endir, partlayışla qaldır.', 'ayaq': 'Squat: Oynaqlara yük düşməməsi üçün tam fokuslan.', 'qol': 'Curl: Yuxarıda mütləq pik sıxılmanı hiss et.', 'kürək': 'Deadlift: Formanı qoru, ağırlığı hiss et.' };
+        const d = { 
+            'sinə': '<b>Bench Press:</b> Barı yavaş endir, tam partlayışla qaldır.', 
+            'ayaq': '<b>Squat:</b> Beli düz tut, tam fokuslanaraq aşağı otur.', 
+            'qol': '<b>Bicep Curl:</b> Yuxarıda mütləq 1 saniyə sıxılmanı hiss et.', 
+            'kürək': '<b>Deadlift:</b> Formanı qoru, ağırlığı hiss et.' 
+        };
         document.getElementById('m-res').innerHTML = d[document.getElementById('ms').value];
     }
 
     function calcP() {
         let w = document.getElementById('weight').value;
-        if(w) document.getElementById('pr-res').innerHTML = `Gündəlik: <b>${w*2}q Protein</b> (Düzgün bərpa üçün).`;
+        if(w) document.getElementById('pr-res').innerHTML = `Gündəlik: <b style="color:var(--gold)">${w*2}q Protein</b> (Düzgün bərpa üçün).`;
     }
 
     let tl = 60, ti;
@@ -162,13 +199,13 @@
         ti = setInterval(() => {
             tl--;
             document.getElementById('time').innerText = `00:${tl < 10 ? '0'+tl : tl}`;
-            if(tl <= 0) { clearInterval(ti); alert("Fasilə bitdi!"); }
+            if(tl <= 0) { clearInterval(ti); alert("Fasilə bitdi! Məşqə qayıdın! 🔥"); }
         }, 1000);
     }
 </script>
 
 <footer>
-    ENGINEERED BY NAZIR IBRAHIMOV | NB FITNESS ACADEMY © 2026
+    NB FITNESS ACADEMY | OFFICIAL SYSTEM v16.1 | NAZİR & ARİF © 2026
 </footer>
 
 </body>
